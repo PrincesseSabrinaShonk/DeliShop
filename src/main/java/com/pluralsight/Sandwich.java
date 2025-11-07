@@ -86,17 +86,53 @@ public class Sandwich extends OrderItems {
         return basePrice;  // Return the final total price of the sandwich.
     }
     private double getMeatPrice() {
-        return 0;
+        switch (size) {
+            case "4":
+                return 1.00;
+            case "8":
+                return 2.00;
+            case "12":
+                return 3.00;
+            default:
+                return 0;
+        }
     }
     private double getExtraMeatPrice() {
-        return 0;
+        switch (size) {
+            case "4":
+                return 0.50;
+            case "8":
+                return 1.00;
+            case "12":
+                return 1.50;
+            default:
+                return 0;
+        }
     }
     private double getCheesePrice() {
-        return 0;
+        switch (size) {
+            case "4":
+                return 0.75;
+            case "8":
+                return 1.50;
+            case "12":
+                return 2.25;
+            default:
+                return 0;
+        }
     }
     private double getExtraCheesePrice() {
-        return 0;
-    }
+        switch (size) {
+            case "4":
+                return 0.30;
+            case "8":
+                return 0.60;
+            case "12":
+                return 0.90;
+            default:
+                return 0;
+        }
+       }
     }
 
 
