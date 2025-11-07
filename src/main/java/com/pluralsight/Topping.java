@@ -15,12 +15,24 @@ public class Topping {
         return name;
     }
 
+    public void setName(String name) {
+        this.name = name;
+    }
+
     public String getCategory() {
         return category;
     }
 
+    public void setCategory(String category) {
+        this.category = category;
+    }
+
     public boolean isExtra() {
         return extra;
+    }
+
+    public void setExtra(boolean extra) {
+        this.extra = extra;
     }
 
     @Override
@@ -32,3 +44,4 @@ public class Topping {
                 '}';
     }
 }
+

@@ -1,5 +1,9 @@
 package com.pluralsight;
 
+import java.io.FileWriter;
+import java.io.PrintWriter;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 
 public class Order {
@@ -21,34 +25,83 @@ public class Order {
     public void addChips(String chip) {
         chips.add(chip);
     }
-
-    public double calculateTotal() {
-        // Will calculate in Phase 2 (based on sandwich, drink, chip prices)
-        return 0.0;
+    public ArrayList<Sandwich> getSandwiches() {
+        return sandwiches;
     }
 
-    // This method prints out everything the customer has ordered.
+    public ArrayList<Drink> getDrinks() {
+        return drinks;
+    }
+
+    public ArrayList<Chips> getChips() {
+        return chips;
+    }
+
+    public double calculateTotal() {
+        double total = 0;
+
+        // Add sandwich prices
+        for (Sandwich sandwich : sandwiches) {
+            total += sandwich.calculatePrice();
+        }
+
+        // Add drink prices
+        for (Drink drink : drinks) {
+            total += drink.getPrice();
+        }
+
+        // Add chips prices
+        for (Chips chip : chips) {
+            total += chip.getPrice();
+        }
+
+        return total;
+    }
+
+    public boolean isEmpty() {
+        return sandwiches.isEmpty() && drinks.isEmpty() && chips.isEmpty();
+    }
+
+    public int getSandwichCount() {
+        return sandwiches.size();
+    }
+
+    public boolean hasChipsOrDrink() {
+        return !drinks.isEmpty() || !chips.isEmpty();
+    }
+
     public void displayOrderDetails() {
-        if (sandwiches.isEmpty() && drinks.isEmpty() && chips.isEmpty()) {    // If nothing has been added to the order, tell the user their order is empty.
+        if (isEmpty()) {
             System.out.println("No items in your order.");
             return;
         }
 
-        // --- Display all sandwiches in the order ---
-        System.out.println("---- Sandwiches ----");
-        for (Sandwich s : sandwiches) {
-            System.out.println(s);
-        }
-        // --- Display all drinks in the order ---
-        System.out.println("---- Drinks ----");
-        for (String d : drinks) {
-            System.out.println(d);
-        }
-        // --- Display all chips in the order ---
-        System.out.println("---- Chips ----");
-        for (String c : chips) {
-            System.out.println(c);
+        System.out.println("\n===== ORDER SUMMARY =====");
 
+        if (!sandwiches.isEmpty()) {
+            System.out.println("\n---- Sandwiches ----");
+            for (int i = 0; i < sandwiches.size(); i++) {
+                System.out.println((i + 1) + ". " + sandwiches.get(i));
+            }
         }
+
+        if (!drinks.isEmpty()) {
+            System.out.println("---- Drinks ----");
+            for (int i = 0; i < drinks.size(); i++) {
+                System.out.println((i + 1) + ". " + drinks.get(i));
+            }
+        }
+
+        if (!chips.isEmpty()) {
+            System.out.println("---- Chips ----");
+            for (int i = 0; i < chips.size(); i++) {
+                System.out.println((i + 1) + ". " + chips.get(i));
+            }
+        }
+
+        System.out.printf("\nTotal: $%.2f%n", calculateTotal());
+        System.out.println("========================\n");
     }
 }
+
+

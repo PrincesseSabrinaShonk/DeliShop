@@ -9,7 +9,7 @@ public class Sandwich {
     private boolean toasted;
     private ArrayList<Topping> toppings;
 
-// Constructor
+    // Constructor
     public Sandwich(String size, String breadType, boolean toasted) {
         this.size = size;                                // Stores the size of the sandwich (e.g., small, medium, large)
         this.breadType = breadType;                      // Stores the type of bread:wrap, wheat, white, rye
@@ -48,16 +48,19 @@ public class Sandwich {
 
     // Method to Calculate Price
     public double calculatePrice() {
-        return 0.0;
-    }
+        double basePrice = 0;
+        // Base bread price
+        switch (size) {
+            case "4":
+                basePrice = 5.50;
+                break;
+            case "8":
+                basePrice = 7.00;
+                break;
+            case "12":
+                basePrice = 8.50;
+                break;
 
-    @Override
-    public String toString() {
-        return "Sandwich{" +
-                "size='" + size + '\'' +
-                ", breadType='" + breadType + '\'' +
-                ", toasted=" + toasted +
-                ", toppings=" + toppings +
-                '}';
+        }
     }
 }
