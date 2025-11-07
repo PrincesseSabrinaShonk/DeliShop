@@ -67,6 +67,7 @@ public class Sandwich extends OrderItems {
                 break;
         }
         // Loop through all toppings and add their costs to the total.
+
         for (Topping topping : toppings) {
             if (topping.getCategory().equalsIgnoreCase("meat")) {   // If the topping is meat, add either regular or extra meat price.
                 if (topping.isExtra()) {
@@ -133,6 +134,30 @@ public class Sandwich extends OrderItems {
                 return 0;
         }
        }
+    @Override
+    public String toString() {
+        StringBuilder sb = new StringBuilder();
+        sb.append(size).append("\" ").append(breadType).append(" sandwich");
+
+        if (toasted) {
+            sb.append(" (Toasted)");
+        }
+
+        sb.append(" - $").append(String.format("%.2f", calculatePrice()));
+
+        if (!toppings.isEmpty()) {
+            sb.append("\n   Toppings:");
+            for (Topping topping : toppings) {
+                sb.append("\n     - ").append(topping.getName());
+                if (topping.isExtra()) {
+                    sb.append(" (Extra)");
+                }
+            }
+        }
+
+        return sb.toString();
     }
+}
+
 
 
