@@ -1,4 +1,6 @@
 package com.pluralsight;
+
+
 import java.util.ArrayList;
 
 
@@ -6,158 +8,57 @@ public class Sandwich extends OrderItems {
     private String size;
     private String breadType;
     private boolean toasted;
-    private ArrayList<Topping> toppings;
+    private ArrayList<Topping> toppings = new ArrayList<>();
+
 
     // Constructor
     public Sandwich(String size, String breadType, boolean toasted) {
         this.size = size;
         this.breadType = breadType;
         this.toasted = toasted;
-        this.toppings = new ArrayList<>();
     }
 
-    // Used to access or modify the private variables. getters and setters
-    public String getSize() {
-        return size;
-    }
-
-    public void setSize(String size) {
-        this.size = size;
-    }
-
-    public String getBreadType() {
-        return breadType;
-    }
-
-    public void setBreadType(String breadType) {
-        this.breadType = breadType;
-    }
-
-    public boolean isToasted() {
-        return toasted;
-    }
-
-    public void setToasted(boolean toasted) {
-        this.toasted = toasted;
-    }
-
-    public ArrayList<Topping> getToppings() {
-        return toppings;
-    }
-
-    // Method to Add a Topping
+    //Add topping to the sandwich
     public void addTopping(Topping topping) {
-        toppings.add(topping);
+        toppings.add(topping); //Add topping object to list
     }
 
-
-    // Method to Calculate Price of the Sandwich
-    public double calculatePrice() {
-        double basePrice = 0;
-        // Base bread price
-        switch (size) {     // Set the base sandwich price depending on its size.
-            case "4":
-                basePrice = 5.50;
-                break;
-            case "8":
-                basePrice = 7.00;
-                break;
-            case "12":
-                basePrice = 8.50;
-                break;
-        }
-        // Loop through all toppings and add their costs to the total.
-
-        for (Topping topping : toppings) {
-            if (topping.getCategory().equalsIgnoreCase("meat")) {   // If the topping is meat, add either regular or extra meat price.
-                if (topping.isExtra()) {
-                    basePrice += getExtraMeatPrice();
-                } else {
-                    basePrice += getMeatPrice();
-                }
-                // If the topping is cheese, add either regular or extra cheese price.
-            } else if (topping.getCategory().equalsIgnoreCase("cheese")) {
-                if (topping.isExtra()) {
-                    basePrice += getExtraCheesePrice();
-                } else {
-                    basePrice += getCheesePrice();
-                }
-            }
-        }
-        return basePrice;  // Return the final total price of the sandwich.
-    }
-    private double getMeatPrice() {
-        switch (size) {
-            case "4":
-                return 1.00;
-            case "8":
-                return 2.00;
-            case "12":
-                return 3.00;
-            default:
-                return 0;
-        }
-    }
-    private double getExtraMeatPrice() {
-        switch (size) {
-            case "4":
-                return 0.50;
-            case "8":
-                return 1.00;
-            case "12":
-                return 1.50;
-            default:
-                return 0;
-        }
-    }
-    private double getCheesePrice() {
-        switch (size) {
-            case "4":
-                return 0.75;
-            case "8":
-                return 1.50;
-            case "12":
-                return 2.25;
-            default:
-                return 0;
-        }
-    }
-    private double getExtraCheesePrice() {
-        switch (size) {
-            case "4":
-                return 0.30;
-            case "8":
-                return 0.60;
-            case "12":
-                return 0.90;
-            default:
-                return 0;
-        }
-       }
     @Override
-    public String toString() {
-        StringBuilder sb = new StringBuilder();
-        sb.append(size).append("\" ").append(breadType).append(" sandwich");
+    public double getPrice() {
+        double basePrice = 0;
+        if(size.equals("4")) basePrice = 5.50;
+        else if(size.equals("8")) basePrice = 7.00;
+        else if(size.equals("12")) basePrice = 8.50;
 
-        if (toasted) {
-            sb.append(" (Toasted)");
-        }
-
-        sb.append(" - $").append(String.format("%.2f", calculatePrice()));
-
-        if (!toppings.isEmpty()) {
-            sb.append("\n   Toppings:");
-            for (Topping topping : toppings) {
-                sb.append("\n     - ").append(topping.getName());
-                if (topping.isExtra()) {
-                    sb.append(" (Extra)");
-                }
+        double total = basePrice; // Start with base
+        // Base bread price
+        for(Topping topping: toppings) {
+            if(topping.getType().equals("MEAT")) {
+                if(size.equals("4")) total += topping.isExtra() ? 0.50 : 1.00;
+                else if(size.equals("8")) total += topping.isExtra() ? 1.00 : 2.00;
+                else if(size.equals("12")) total += topping.isExtra() ? 1.50 : 3.00;
+            } else if(topping.getType().equals("CHEESE")) {
+                if(size.equals("4")) total += topping.isExtra() ? 0.30 : 0.75;
+                else if(size.equals("8")) total += topping.isExtra() ? 0.60 : 1.50;
+                else if(size.equals("12")) total += topping.isExtra() ? 0.90 : 2.25;
             }
         }
-
-        return sb.toString();
+        return total; // Return total price
     }
-}
+    @Override
+    public String getDescription() {
+        StringBuilder sb = new StringBuilder();
+        sb.append(size).append("\" ").append(breadType).append(" (Toasted: ").append(toasted).append(")\nToppings: ");
+        for(Topping t : toppings) {
+            sb.append(t.getName());           // Add topping name
+            if(t.isExtra()) sb.append(" (extra)"); // Mark extra
+            sb.append(", ");                  // Separator
+        }
+        return sb.toString(); // Return full description
+    }
+    }
+
+
 
 
 

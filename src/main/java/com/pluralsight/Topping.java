@@ -2,23 +2,13 @@ package com.pluralsight;
 
 public class Topping {
     private String name;
-    private String category; // meat, cheese, regular, sauce
+    private String type; // meat, cheese, regular, sauce
     private boolean extra;
-    private double price;
 
-    public Topping(String name, String category, boolean extra) {
+    public Topping(String name, String type, boolean extra) {
         this.name = name;
-        this.category = category;
+        this.type = type;
         this.extra = extra;
-        this.price =price;
-    }
-
-    public double getPrice() {
-        return price;
-    }
-
-    public void setPrice(double price) {
-        this.price = price;
     }
 
     public String getName() {
@@ -29,12 +19,12 @@ public class Topping {
         this.name = name;
     }
 
-    public String getCategory() {
-        return category;
+    public String getType() {
+        return type;
     }
 
-    public void setCategory(String category) {
-        this.category = category;
+    public void setType(String type) {
+        this.type= type;
     }
 
     public boolean isExtra() {
@@ -49,7 +39,7 @@ public class Topping {
     public String toString() {
         return "Topping{" +
                 "name='" + name + '\'' +
-                ", category='" + category + '\'' +
+                ",type='" + type+ '\'' +
                 ", extra=" + extra +
                 '}';
     }
