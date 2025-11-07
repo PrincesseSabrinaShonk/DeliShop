@@ -23,23 +23,32 @@ public class Sandwich extends OrderItems {
     @Override
     public double getPrice() {
         double basePrice = 0;
+
+        // Set the base price of the sandwich depending on its size
         if(size.equals("4")) basePrice = 5.50;
         else if(size.equals("8")) basePrice = 7.00;
         else if(size.equals("12")) basePrice = 8.50;
 
+
+        // Start total with the base bread price
         double total = basePrice;
         // Base bread price
         for(Topping topping: toppings) {
-            if(topping.getType().equals("MEAT")) {
+            if(topping.getType().equals("MEAT")) {    // If the topping is meat
+                // Add meat price depending on sandwich size and whether it's extra
                 if(size.equals("4")) total += topping.isExtra() ? 0.50 : 1.00;
                 else if(size.equals("8")) total += topping.isExtra() ? 1.00 : 2.00;
                 else if(size.equals("12")) total += topping.isExtra() ? 1.50 : 3.00;
-            } else if(topping.getType().equals("CHEESE")) {
+
+            } else if(topping.getType().equals("CHEESE")) {    // If the topping is cheese
+
+                // Add cheese price depending on sandwich size and whether it's extra
                 if(size.equals("4")) total += topping.isExtra() ? 0.30 : 0.75;
                 else if(size.equals("8")) total += topping.isExtra() ? 0.60 : 1.50;
                 else if(size.equals("12")) total += topping.isExtra() ? 0.90 : 2.25;
             }
         }
+        //Return the final total price of the sandwich including all topping
         return total;
     }
     @Override
