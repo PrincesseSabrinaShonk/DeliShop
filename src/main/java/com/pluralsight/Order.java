@@ -1,9 +1,4 @@
 package com.pluralsight;
-
-import java.io.FileWriter;
-import java.io.PrintWriter;
-import java.time.LocalDateTime;
-import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 
 public class Order {
