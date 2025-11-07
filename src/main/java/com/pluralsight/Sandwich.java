@@ -1,8 +1,5 @@
 package com.pluralsight;
-
-
 import java.util.ArrayList;
-
 
 public class Sandwich extends OrderItems {
     private String size;
@@ -30,7 +27,7 @@ public class Sandwich extends OrderItems {
         else if(size.equals("8")) basePrice = 7.00;
         else if(size.equals("12")) basePrice = 8.50;
 
-        double total = basePrice; // Start with base
+        double total = basePrice;
         // Base bread price
         for(Topping topping: toppings) {
             if(topping.getType().equals("MEAT")) {
@@ -43,19 +40,19 @@ public class Sandwich extends OrderItems {
                 else if(size.equals("12")) total += topping.isExtra() ? 0.90 : 2.25;
             }
         }
-        return total; // Return total price
+        return total;
     }
     @Override
     public String getDescription() {
         StringBuilder sb = new StringBuilder();
         sb.append(size).append("\" ").append(breadType).append(" (Toasted: ").append(toasted).append(")\nToppings: ");
         for(Topping t : toppings) {
-            sb.append(t.getName());           // Add topping name
-            if(t.isExtra()) sb.append(" (extra)"); // Mark extra
-            sb.append(", ");                  // Separator
+            sb.append(t.getName());
+            if(t.isExtra()) sb.append(" (extra)");
+            sb.append(", ");
         }
-        return sb.toString(); // Return full description
-    }
+        return sb.toString();
+        }
     }
 
 
