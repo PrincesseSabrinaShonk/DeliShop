@@ -12,8 +12,8 @@ public class Sandwich {
 // Constructor
     public Sandwich(String size, String breadType, boolean toasted) {
         this.size = size;                                // Stores the size of the sandwich (e.g., small, medium, large)
-        this.breadType = breadType;                      // Stores the type of bread (e.g., wheat, white, rye
-        this.toasted = toasted;                          // Indicates whether the sandwich is toasted (true or false)
+        this.breadType = breadType;                      // Stores the type of bread:wrap, wheat, white, rye
+        this.toasted = toasted;                          // Indicates whether the sandwich is toasted
         this.toppings = new ArrayList<>();               // A list to hold the toppings added to the sandwich
     }
 
