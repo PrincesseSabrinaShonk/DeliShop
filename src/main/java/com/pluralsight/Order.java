@@ -1,9 +1,7 @@
 package com.pluralsight;
 import java.util.ArrayList;
 
-public class Order {
-
-    // --- Instance Variables the data each Order object will store ---
+public class Order {                  // --- Instance Variables the data each Order object will store ---
     private ArrayList<Sandwich> sandwiches ;
     private ArrayList<Drink> drinks;
     private ArrayList<Chips> chips;
@@ -40,24 +38,19 @@ public class Order {
 
     public double calculateTotal() {
         double total = 0;
-
-        // Using polymorphism - calling getPrice on OrderItem objects
-        for (Sandwich sandwich : sandwiches) {
+        for (Sandwich sandwich : sandwiches) {                    // Using polymorphism - calling getPrice on OrderItem objects
             total += sandwich.calculatePrice();
         }
-
-        // Add drink prices
         for (Drink drink : drinks) {
             total += drink.getPrice();
         }
-
-        // Add chips prices
         for (Chips chip : chips) {
             total += chip.getPrice();
         }
-
         return total;
      }
+
+
      // Check if the order has no items.
       public boolean isEmpty() {
         return sandwiches.isEmpty() && drinks.isEmpty() && chips.isEmpty();
@@ -72,7 +65,7 @@ public class Order {
     public boolean hasChipsOrDrink() {
         return !drinks.isEmpty() || !chips.isEmpty();
     }
-    
+
     // Display a detailed summary of the order in the console.
     public void displayOrderDetails() {
         if (isEmpty()) {      // If the order is empty, print a message and stop.

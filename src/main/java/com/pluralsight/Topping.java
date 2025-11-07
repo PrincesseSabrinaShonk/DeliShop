@@ -4,11 +4,21 @@ public class Topping {
     private String name;
     private String category; // meat, cheese, regular, sauce
     private boolean extra;
+    private double price;
 
     public Topping(String name, String category, boolean extra) {
         this.name = name;
         this.category = category;
         this.extra = extra;
+        this.price =price;
+    }
+
+    public double getPrice() {
+        return price;
+    }
+
+    public void setPrice(double price) {
+        this.price = price;
     }
 
     public String getName() {
