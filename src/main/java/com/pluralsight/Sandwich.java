@@ -1,8 +1,7 @@
 package com.pluralsight;
-
 import java.util.ArrayList;
 
-// Fields Instance Variables
+
 public class Sandwich {
     private String size;
     private String breadType;
@@ -11,12 +10,13 @@ public class Sandwich {
 
     // Constructor
     public Sandwich(String size, String breadType, boolean toasted) {
-        this.size = size;                                // Stores the size of the sandwich (e.g., small, medium, large)
-        this.breadType = breadType;                      // Stores the type of bread:wrap, wheat, white, rye
-        this.toasted = toasted;                          // Indicates whether the sandwich is toasted
-        this.toppings = new ArrayList<>();               // A list to hold the toppings added to the sandwich
+        this.size = size;
+        this.breadType = breadType;
+        this.toasted = toasted;
+        this.toppings = new ArrayList<>();
     }
 
+    // Used to access or modify the private variables. getters and setters
     public String getSize() {
         return size;
     }
@@ -41,16 +41,21 @@ public class Sandwich {
         this.toasted = toasted;
     }
 
+    public ArrayList<Topping> getToppings() {
+        return toppings;
+    }
+
     // Method to Add a Topping
     public void addTopping(Topping topping) {
         toppings.add(topping);
     }
 
-    // Method to Calculate Price
+
+    // Method to Calculate Price of the Sandwich
     public double calculatePrice() {
         double basePrice = 0;
         // Base bread price
-        switch (size) {
+        switch (size) {     // Set the base sandwich price depending on its size.
             case "4":
                 basePrice = 5.50;
                 break;
@@ -60,7 +65,38 @@ public class Sandwich {
             case "12":
                 basePrice = 8.50;
                 break;
-
         }
+        // Loop through all toppings and add their costs to the total.
+        for (Topping topping : toppings) {
+            if (topping.getCategory().equalsIgnoreCase("meat")) {   // If the topping is meat, add either regular or extra meat price.
+                if (topping.isExtra()) {
+                    basePrice += getExtraMeatPrice();
+                } else {
+                    basePrice += getMeatPrice();
+                }
+                // If the topping is cheese, add either regular or extra cheese price.
+            } else if (topping.getCategory().equalsIgnoreCase("cheese")) {
+                if (topping.isExtra()) {
+                    basePrice += getExtraCheesePrice();
+                } else {
+                    basePrice += getCheesePrice();
+                }
+            }
+        }
+        return basePrice;  // Return the final total price of the sandwich.
     }
-}
+    private double getMeatPrice() {
+        return 0;
+    }
+    private double getExtraMeatPrice() {
+        return 0;
+    }
+    private double getCheesePrice() {
+        return 0;
+    }
+    private double getExtraCheesePrice() {
+        return 0;
+    }
+    }
+
+
