@@ -38,7 +38,6 @@ public class Drink {
             default:
                 return 0;
         }
-        // --- toString for displaying the drink ---
     }
 
     @Override

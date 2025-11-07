@@ -23,9 +23,7 @@ public class Chips {
 
     @Override
     public String toString() {
-        return "Chips{" +
-                "type='" + type + '\'' +
-                '}';
+        return  String.format("%s Chips - $%.2f", type, price);
     }
 }
 
