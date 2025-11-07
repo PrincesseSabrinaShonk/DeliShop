@@ -8,7 +8,7 @@ public class Order {
     private ArrayList<Drink> drinks;
     private ArrayList<Chips> chips;
 
-    public Order(ArrayList<Drink> drinks, ArrayList<Chips> chips) {
+    public Order(){
         this.drinks =new ArrayList<>();
         this.chips =new ArrayList<>() ;
         this.sandwiches = new ArrayList<>();
@@ -41,7 +41,7 @@ public class Order {
     public double calculateTotal() {
         double total = 0;
 
-        // Add sandwich prices
+        // Using polymorphism - calling getPrice on OrderItem objects
         for (Sandwich sandwich : sandwiches) {
             total += sandwich.calculatePrice();
         }
@@ -61,15 +61,18 @@ public class Order {
      // Check if the order has no items.
       public boolean isEmpty() {
         return sandwiches.isEmpty() && drinks.isEmpty() && chips.isEmpty();
+
     }
     // Get the number of sandwiches in the order.
     public int getSandwichCount() {
         return sandwiches.size();
     }
+
     // Check if the order includes at least one drink or chips.
     public boolean hasChipsOrDrink() {
         return !drinks.isEmpty() || !chips.isEmpty();
     }
+    
     // Display a detailed summary of the order in the console.
     public void displayOrderDetails() {
         if (isEmpty()) {      // If the order is empty, print a message and stop.
