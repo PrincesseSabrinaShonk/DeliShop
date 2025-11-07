@@ -1,7 +1,6 @@
 package com.pluralsight;
 
-public class Drink {
-    //Instance variables
+public class Drink extends  OrderItems {
     private String size;
     private String flavor;
 
@@ -27,6 +26,7 @@ public class Drink {
     public void setFlavor(String flavor) {
         this.flavor = flavor;
     }
+    @Override
     public double getPrice() {
         switch (size.toLowerCase()) {
             case "small":

@@ -1,4 +1,5 @@
 package com.pluralsight;
 
-public class OrderItems {
+public abstract class OrderItems {
+    public abstract double getPrice();
 }

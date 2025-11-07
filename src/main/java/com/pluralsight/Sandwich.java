@@ -2,7 +2,7 @@ package com.pluralsight;
 import java.util.ArrayList;
 
 
-public class Sandwich {
+public class Sandwich extends OrderItems {
     private String size;
     private String breadType;
     private boolean toasted;
