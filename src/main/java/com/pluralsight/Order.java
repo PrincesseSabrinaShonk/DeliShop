@@ -40,7 +40,7 @@ public class Order {
         double total = 0;
         // Using polymorphism - calling getPrice on OrderItem objects
         for (Sandwich sandwich : sandwiches) {
-            total += sandwich.calculatePrice();
+            total += sandwich.getPrice();
         }
         for (Drink drink : drinks) {
             total += drink.getPrice();
