@@ -1,6 +1,7 @@
 package com.pluralsight;
 import java.util.ArrayList;
 
+//Instance variables
 public class Sandwich extends OrderItems {
     private String size;
     private String breadType;
@@ -20,11 +21,11 @@ public class Sandwich extends OrderItems {
         toppings.add(topping); //Add topping object to list
     }
 
+    // Calculate sandwich price
     @Override
     public double getPrice() {
         double basePrice = 0;
-
-        // Set the base price of the sandwich depending on its size
+        // Set the base price depending on sandwich size
         if(size.equals("4")) basePrice = 5.50;
         else if(size.equals("8")) basePrice = 7.00;
         else if(size.equals("12")) basePrice = 8.50;
