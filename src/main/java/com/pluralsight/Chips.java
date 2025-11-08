@@ -29,7 +29,7 @@ public class Chips extends OrderItems {        //Instance variables
         return "";
     }
 
-    // Defines how the chip item appears as text 
+    // Defines how the chip item appears as text
     @Override
     public String toString() {
         return  String.format("%s Chips - $%.2f", type, price);
