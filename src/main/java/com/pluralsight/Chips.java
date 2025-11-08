@@ -2,7 +2,7 @@ package com.pluralsight;
 
 public class Chips extends OrderItems {  // --- Instance variables ---
     private String type;
-    private static final double price = 1.50;
+    private static final double price = 1.50;   // All chips have the same price
 
 
     public Chips(String type) {

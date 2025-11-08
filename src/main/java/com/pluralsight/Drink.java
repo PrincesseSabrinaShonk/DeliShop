@@ -1,8 +1,8 @@
 package com.pluralsight;
 
-public class Drink extends  OrderItems {
-    private String size;
-    private String flavor;
+public class Drink extends  OrderItems {    // --- Instance variables ---
+    private String size;                    // small, medium, or large
+    private String flavor;                  // the flavor of the drink: Coke, Sprite, Lemonade
 
 
     // Constructor
@@ -11,6 +11,7 @@ public class Drink extends  OrderItems {
         this.flavor = flavor;
     }
 
+    //Getters and Setters
     public String getSize() {
         return size;
     }
@@ -26,6 +27,8 @@ public class Drink extends  OrderItems {
     public void setFlavor(String flavor) {
         this.flavor = flavor;
     }
+
+    //Override methods from OrderItems
     @Override
     public double getPrice() {
         switch (size.toLowerCase()) {
@@ -39,7 +42,7 @@ public class Drink extends  OrderItems {
                 return 0;
         }
     }
-
+    // Returns a short description of the drink
     @Override
     public String getDescription() {
         return "";
