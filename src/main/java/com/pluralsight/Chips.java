@@ -22,6 +22,11 @@ public class Chips extends OrderItems {  // --- Instance variables ---
     }
 
     @Override
+    public String getDescription() {
+        return "";
+    }
+
+    @Override
     public String toString() {
         return  String.format("%s Chips - $%.2f", type, price);
     }

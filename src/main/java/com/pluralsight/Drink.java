@@ -41,6 +41,11 @@ public class Drink extends  OrderItems {
     }
 
     @Override
+    public String getDescription() {
+        return "";
+    }
+
+    @Override
     public String toString() {
         return String.format("%s %s Drink - $%.2f",
                 size.substring(0, 1).toUpperCase() + size.substring(1),
