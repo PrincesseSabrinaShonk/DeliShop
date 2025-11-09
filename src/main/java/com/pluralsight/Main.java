@@ -15,24 +15,8 @@ public class Main {
                 System.out.println("0) Exit");
                 System.out.print("\nEnter your choice: ");
 
-                String choice = ConsoleHelper.promptForString("Enter your choice");
 
-                // Use switch for menu selection
-                switch (choice) {
-                    case "1":
-                        Order O = new Order(); // Create a new order object
-                        HomeScreen();          // Show the order menu
-                        break;
-                    case "0":
-                        System.out.println("\nThank you for visiting our DELI-SHOP! Goodbye!");
-                        return; // Exit the method and end the program
-                    default:
-                        System.out.println("Invalid choice. Please try again."); // Handle invalid input
-                }
-            }
-        }
         //Display the Order Screen menu
-        private static void OrderScreen () {
             while (true) {
                 System.out.println("\n╔════════════════════════════════╗");
                 System.out.println("║        Order Screen            ║");
@@ -59,21 +43,46 @@ public class Main {
                         checkout();
                         return; // Return to Home Screen after checkout
                     case "0":
-                        System.out.println("\nOrder cancelled.");
+                        System.out.println("\nOrder cancelled. Returning to Home Screen..");
                         return;
                     default:
                         System.out.println("Invalid choice. Please try again.");
                 }
-                
+
             }
         }
-    private static void addSandwich () {
-    }
-    private static void addDrink() {
-    }
-    private static void addChips(){
-    }
-    private static void checkout(){
+}
+    private static OrderItems addSandwich() {
+        System.out.println("\n--- Add Sandwich ---");
+        // Step 1: Select bread and size
+        String size = ConsoleHelper.promptForString("Enter sandwich size (4, 8, 12)");
+        String bread = ConsoleHelper.promptForString("Enter bread type (white, wheat, rye, wrap)");
+        boolean toasted = ConsoleHelper.promptForString("Toasted? (yes/no)").equalsIgnoreCase("yes");
+        // Create sandwich
+        Sandwich sandwich = new Sandwich(size, bread, toasted);
 
+        // Step 2: Add toppings
+        System.out.println("\nAdd toppings. Type 'done' when finished.");
+
+        while (true) {
+            String name = ConsoleHelper.promptForString("Enter topping name (or 'done')");
+            if (name.equalsIgnoreCase("done")) break;
+            String type = ConsoleHelper.promptForString("Enter topping type (MEAT, CHEESE, REGULAR, SAUCE)").toUpperCase();
+            boolean extra = ConsoleHelper.promptForString("Extra portion? (yes/no)").equalsIgnoreCase("yes");
+
+            sandwich.addTopping(new Topping(name, type, extra));
+        }
+        return sandwich;
+    }
+
+    private static OrderItems checkout() {
+        return null;
+    }
+    private static OrderItems addChips() {
+        return null;
+    }
+
+    private static OrderItems addDrink() {
+        return null;
     }
 }
