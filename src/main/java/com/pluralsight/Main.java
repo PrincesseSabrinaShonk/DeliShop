@@ -1,8 +1,10 @@
 package com.pluralsight;
-
 import java.util.Scanner;
 
 public class Main {
+    public static void main(String[] args) {
+        showHomeScreen();
+    }
     // Scanner object for reading user input throughout the application
     private static Scanner scanner = new Scanner(System.in);
 
@@ -10,9 +12,6 @@ public class Main {
     private static Order currentOrder = null;
 
     // This is where execution starts
-    public static void main(String[] args) {
-        showHomeScreen();
-    }
 
     //Display the Home Screen menu
     //Options New Order or Exit
@@ -26,7 +25,17 @@ public class Main {
             System.out.print("\nEnter your choice: ");
             String choice = scanner.nextLine().trim();
 
-
+//            if (choice.equals("1")) {
+//                // Create a new order and show the order screen
+//                currentOrder = new Order();
+//                showOrderScreen();
+//            } else if (choice.equals("0")) {
+//                // Exit the application
+//                System.out.println("\nThank you for visiting DELI-cious! Goodbye!");
+//                break;
+//            } else {
+//                System.out.println("Invalid choice. Please try again.");
+}
             }
         }
     }

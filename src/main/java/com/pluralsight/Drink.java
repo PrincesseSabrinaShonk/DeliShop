@@ -42,10 +42,12 @@ public class Drink extends OrderItems {    // --- Instance variables ---
                 return 0;
         }
     }
+
     // Returns a short description of the drink
     @Override
     public String getDescription() {
-        return  "";
+        return size +"Drink (" + flavor +  ")";
+
     }
 
     @Override
