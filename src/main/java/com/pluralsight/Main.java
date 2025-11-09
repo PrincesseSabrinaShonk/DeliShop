@@ -28,7 +28,6 @@ public class Main {
             }
         }
     }
-
     private static void OrderScreen() {
         Order order = new Order(); // Create a new order
         //Display the Order Screen menu
@@ -89,7 +88,7 @@ public class Main {
         System.out.println("3) Large ($3.00)");
         String sizeChoice = ConsoleHelper.promptForString("Enter your choice");
 
-        String size;
+        String size ;
         switch (sizeChoice) {
             case "1":
                 size = "Small";
@@ -176,7 +175,43 @@ public class Main {
         return chips;
     }
 
-}
+    private static OrderItems addSandwich() {
+        System.out.println("\n--- Add Sandwich ---");
+        // Step 1: Select bread and size
+        String size = ConsoleHelper.promptForString("Enter sandwich size (4, 8, 12)");
+        String bread = ConsoleHelper.promptForString("Enter bread type (white, wheat, rye, wrap)");
 
+        boolean toasted;
+        while (true) {
+            String t = ConsoleHelper.promptForString("Toasted? (Y/N) ");
+            if (t.equalsIgnoreCase("Y")) {
+                toasted = true;
+                break;
+            } else if (t.equalsIgnoreCase("N")) {
+                toasted = false;
+                break;
+            }
+            System.out.println("Invalid input! Please enter Y or N only.");
+        }
 
+//Create a new Sandwich object using the chosen bread, size, and toasted option
+        Sandwich s = new Sandwich(bread, size, toasted);
+
+            while (true) {     // Step 2: Add toppings
+                System.out.println("\nChoose topping category:");
+                System.out.println("1) Meat");
+                System.out.println("2) Cheese");
+                System.out.println("3) Regular Topping");
+                System.out.println("4) Sauce");
+                System.out.println("5) Sides");
+                System.out.println("0) if you done");
+                String categoryChoice = ConsoleHelper.promptForString("Enter your choice");
+
+                String type;
+                String name;
+
+            }
+        }
+
+    }
 // line 354
