@@ -15,6 +15,9 @@ public class Sandwich extends OrderItems {
         this.breadType = breadType;
         this.toasted = toasted;
     }
+    public void setToasted(boolean toasted) {
+        this.toasted = toasted; // setters
+    }
 
     //Add topping to the sandwich
     public void addTopping(Topping topping) {
