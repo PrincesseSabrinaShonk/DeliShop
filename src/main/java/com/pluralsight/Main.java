@@ -30,16 +30,30 @@ public class Main {
                 showHomeScreen();
             } else if (choice.equals("0")) {
                 // Exit the application
-                System.out.println("\nThank you for visiting DELI-cious! Goodbye!");
+                System.out.println("\nThank you for visiting DELI-SHOP! Goodbye!");
                 break;
             } else {
                 System.out.println("Invalid choice. Please try again.");
             }
         }
     }
+    //Display the Order Screen menu
+    private static void OrderScreen(){
+        while (true) {
+            System.out.println("\n╔════════════════════════════════╗");
+            System.out.println("║        Order Screen            ║");
+            System.out.println("╚════════════════════════════════╝");
+            System.out.println("1) Add Sandwich");
+            System.out.println("2) Add Drink");
+            System.out.println("3) Add Chips");
+            System.out.println("4) Checkout");
+            System.out.println("0) Cancel Order");
+            System.out.print("\nEnter your choice: ");
+        }
+    }
 
-    //Add a sandwich to the order by walking through customization options
-    private static void addSandwich() {
-        System.out.println("\n--- Add Sandwich ---");
+        //Add a sandwich to the order by walking through customization options
+        private static void addSandwich() {
+            System.out.println("\n--- Add Sandwich ---");
     }
 }
