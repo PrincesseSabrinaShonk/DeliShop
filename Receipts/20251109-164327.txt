@@ -1,0 +1,14 @@
+===== DELI-SHOP Receipt =====
+Date: 11/09/2025 04:43:27 PM
+================================
+
+---- Sandwiches ----
+1. rye" 4 (Toasted: true)
+Toppings: Mayo, Sauce
+   Price: $0.00
+
+================================
+Total: $0.00
+================================
+
+Thank you for choosing DELI-SHOP!

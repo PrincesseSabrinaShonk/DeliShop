@@ -1,0 +1,20 @@
+===== DELI-SHOP Receipt =====
+Date: 11/09/2025 01:53:09 PM
+================================
+
+---- Sandwiches ----
+1. 4" rye (Toasted: true)
+Toppings: Steak, American (extra), Lettuce, Mayo
+   Price: $6.80
+
+---- Drinks ----
+1. Small Sprite Drink - $2.00
+
+---- Chips ----
+1. Classic Chips - $1.50
+
+================================
+Total: $10.30
+================================
+
+Thank you for choosing DELI-SHOP!

@@ -1,0 +1,20 @@
+===== DELI-SHOP Receipt =====
+Date: 11/09/2025 04:00:53 PM
+================================
+
+---- Sandwiches ----
+1. 12" wrap (Toasted: true)
+Toppings: Salami (extra), Steak (extra), American (extra), Lettuce, Lettuce, Mayo
+   Price: $12.40
+
+---- Drinks ----
+1. Medium Iced Tea Drink - $2.50
+
+---- Chips ----
+1. Classic Chips - $1.50
+
+================================
+Total: $16.40
+================================
+
+Thank you for choosing DELI-SHOP!

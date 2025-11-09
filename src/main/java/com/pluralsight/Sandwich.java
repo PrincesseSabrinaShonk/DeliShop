@@ -59,15 +59,24 @@ public class Sandwich extends OrderItems {
     public String getDescription() {
         StringBuilder sb = new StringBuilder();
         sb.append(size).append("\" ").append(breadType).append(" (Toasted: ").append(toasted).append(")\nToppings: ");
-        for(Topping t : toppings) {
+        for (int i = 0; i < toppings.size(); i++) {
+            Topping t = toppings.get(i);
             sb.append(t.getName());
-            if(t.isExtra()) sb.append(" (extra)");
-            sb.append(", ");
+            if (t.isExtra()) sb.append(" (extra)");
+            if (i < toppings.size() - 1) sb.append(", ");
         }
         return sb.toString();
-        }
     }
 
+    @Override
+    public String toString() {
+        return "Sandwich{" +
+                "size='" + size + '\'' +
+                ", breadType='" + breadType + '\'' +
+                ", toasted=" + toasted +
+                '}';
+    }
+}
 
 
 

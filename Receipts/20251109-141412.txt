@@ -1,0 +1,17 @@
+===== DELI-SHOP Receipt =====
+Date: 11/09/2025 02:14:12 PM
+================================
+
+---- Sandwiches ----
+1. 8" white (Toasted: true)
+Toppings: 
+   Price: $7.00
+
+---- Drinks ----
+1. Small Coke Drink - $2.00
+
+================================
+Total: $9.00
+================================
+
+Thank you for choosing DELI-SHOP!

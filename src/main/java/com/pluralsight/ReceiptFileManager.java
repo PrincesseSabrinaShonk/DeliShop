@@ -1,5 +1,6 @@
 package com.pluralsight;
 
+import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.time.LocalDateTime;
@@ -13,6 +14,11 @@ public class ReceiptFileManager {
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyyMMdd-HHmmss");
         String filename = "receipts/" + now.format(formatter) + ".txt";
         try {
+            // Create the receipts folder if it doesn't exist
+            File folder = new File("receipts");
+            if (!folder.exists()) {
+                folder.mkdir();
+            }
             // Create a FileWriter to write to the receipt file
             FileWriter w = new FileWriter(filename);
 
