@@ -13,6 +13,7 @@ public class Chips extends OrderItems {        //Instance variables
     public String getType() {
         return type;
     }
+
     public void setType(String type) {
         this.type = type;
     }
@@ -26,12 +27,12 @@ public class Chips extends OrderItems {        //Instance variables
     // Returns a short description used for receipts or menus
     @Override
     public String getDescription() {
-        return type;
-    }
-//
-//    // Defines how the chip item appears as text
-//    @Override
-//    public String toString() {
-//        return  String.format("%s Chips - $%.2f", type, price);
+        return String.format("%s Chips - $%.2f", type, price);
     }
 
+    // Defines how the chip item appears as text
+    @Override
+    public String toString() {
+        return getDescription();
+    }
+}

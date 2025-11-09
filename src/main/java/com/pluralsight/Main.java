@@ -11,8 +11,6 @@ public class Main {
     // The current order being built
     private static Order currentOrder = null;
 
-    // This is where execution starts
-
     //Display the Home Screen menu
     //Options New Order or Exit
     private static void showHomeScreen() {
@@ -38,4 +36,3 @@ public class Main {
 }
             }
         }
-    }
