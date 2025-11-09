@@ -1,6 +1,6 @@
 package com.pluralsight;
 
-public class Drink extends  OrderItems {    // --- Instance variables ---
+public class Drink extends OrderItems {    // --- Instance variables ---
     private String size;                    // small, medium, or large
     private String flavor;                  // the flavor of the drink: Coke, Sprite, Lemonade
 
@@ -45,7 +45,7 @@ public class Drink extends  OrderItems {    // --- Instance variables ---
     // Returns a short description of the drink
     @Override
     public String getDescription() {
-        return "";
+        return  "";
     }
 
     @Override
@@ -55,6 +55,7 @@ public class Drink extends  OrderItems {    // --- Instance variables ---
                 flavor,
                 getPrice());
     }
+
 }
 
 
