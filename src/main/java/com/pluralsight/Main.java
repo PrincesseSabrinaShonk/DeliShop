@@ -37,4 +37,9 @@ public class Main {
             }
         }
     }
+
+    //Add a sandwich to the order by walking through customization options
+    private static void addSandwich() {
+        System.out.println("\n--- Add Sandwich ---");
+    }
 }
