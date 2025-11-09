@@ -140,5 +140,43 @@ public class Main {
         return drink;
     }
 
+    private static OrderItems addChips() {
+        System.out.println("\n--- Add Chips ---");
+        System.out.println("Select chip type:");
+        System.out.println("1) Classic");
+        System.out.println("2) BBQ");
+        System.out.println("3) Sour Cream & Onion");
+        System.out.println("4) Salt & Vinegar");
+        System.out.println("5) Jalapeño");
+        String chipChoice = ConsoleHelper.promptForString("Enter your choice");
+        String type = "";
+        switch (chipChoice) {
+            case "1":
+                type = "Classic";
+                break;
+            case "2":
+                type = "BBQ";
+                break;
+            case "3":
+                type = "Sour Cream & Onion";
+                break;
+            case "4":
+                type = "Salt & Vinegar";
+                break;
+            case "5":
+                type = "Jalapeño";
+                break;
+            default:
+                System.out.println("Invalid choice. Defaulting to Classic.");
+                type = "Classic";
+        }
+
+        Chips chips = new Chips(type);
+        System.out.println(type + " Chips added successfully!");
+        return chips;
+    }
+
 }
+
+
 // line 354
