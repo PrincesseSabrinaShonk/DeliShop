@@ -3,7 +3,7 @@ import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args) {
-        showHomeScreen();
+        HomeScreen();
     }
 
     // Scanner object for reading user input throughout the application
@@ -13,8 +13,7 @@ public class Main {
     private static Order currentOrder = null;
 
     //Display the Home Screen menu
-    //Options New Order or Exit
-    private static void showHomeScreen() {
+    private static void HomeScreen() {
         while (true) {
             System.out.println("\n========================================");
             System.out.println("       WELCOME TO DELI-SHOP!           ");
@@ -22,18 +21,20 @@ public class Main {
             System.out.println("1) New Order");
             System.out.println("0) Exit");
             System.out.print("\nEnter your choice: ");
-            String choice = scanner.nextLine().trim();
 
-            if (choice.equals("1")) {
-                // Create a new order and show the order screen
-                currentOrder = new Order();
-                showHomeScreen();
-            } else if (choice.equals("0")) {
-                // Exit the application
-                System.out.println("\nThank you for visiting DELI-SHOP! Goodbye!");
-                break;
-            } else {
-                System.out.println("Invalid choice. Please try again.");
+
+            String choice = scanner.nextLine().trim();
+            // Use switch for menu selection
+            switch (choice) {
+                case "1":
+                    currentOrder = new Order(); // Create a new order object
+                    HomeScreen();          // Show the order menu
+                    break;
+                case "0":
+                    System.out.println("\nThank you for visiting our DELI-SHOP! Goodbye!");
+                    return; // Exit the method and end the program
+                default:
+                    System.out.println("Invalid choice. Please try again."); // Handle invalid input
             }
         }
     }
@@ -49,6 +50,10 @@ public class Main {
             System.out.println("4) Checkout");
             System.out.println("0) Cancel Order");
             System.out.print("\nEnter your choice: ");
+            
+            String choice = scanner.nextLine().trim();
+
+
         }
     }
 
