@@ -1,7 +1,6 @@
 package com.pluralsight;
 import java.util.ArrayList;
 
-
    // Lists to hold the different types of order items
 public class Order {
     private ArrayList<Sandwich> sandwiches ;
