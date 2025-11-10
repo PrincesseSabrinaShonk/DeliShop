@@ -1,0 +1,17 @@
+===== DELI-SHOP Receipt =====
+Date: 11/09/2025 06:58:25 PM
+================================
+
+---- Sandwiches ----
+1. 12" w (Toasted: false)
+Toppings: Steak (extra)
+   Price: $10.00
+
+---- Drinks ----
+1. Small Lemonade Drink - $2.00
+
+================================
+Total: $12.00
+================================
+
+Thank you for choosing DELI-SHOP!

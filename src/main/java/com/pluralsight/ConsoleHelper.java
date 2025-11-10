@@ -13,10 +13,19 @@ public class ConsoleHelper {
     }
 
     public static int promptForInt(String prompt) {
-        System.out.print(prompt + ": ");
-        int result = scanner.nextInt();
-        scanner.nextLine();
-        return result;
+        int result;
+
+        while (true) {
+            System.out.print(prompt + ": ");
+            String input = scanner.nextLine().trim(); // read inside the loop
+
+            try {
+                result = Integer.parseInt(input);
+                return result; // valid integer entered
+            } catch (NumberFormatException e) {
+                System.out.println("Invalid input! Please enter a number.");
+            }
+        }
     }
 
     public static double promptForDouble(String prompt) {

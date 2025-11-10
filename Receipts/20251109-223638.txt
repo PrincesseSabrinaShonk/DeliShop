@@ -1,0 +1,20 @@
+===== DELI-SHOP Receipt =====
+Date: 11/09/2025 10:36:38 PM
+================================
+
+---- Sandwiches ----
+1. 4" White (Toasted: true)
+Toppings: Steak, Lettuce
+   Price: $6.50
+
+---- Drinks ----
+1. 3 coke Drink - $0.00
+
+---- Chips ----
+1. cheese Chips - $1.50
+
+================================
+Total: $8.00
+================================
+
+Thank you for choosing DELI-SHOP!

@@ -1,12 +1,11 @@
 package com.pluralsight;
 
-
 public class Main {
     public static void main(String[] args) {
         HomeScreen();
     }
 
-    //Display the Home Screen menu
+    //Display the HomeScreen
     private static void HomeScreen() {
         while (true) {
             System.out.println("\n========================================");
@@ -28,6 +27,7 @@ public class Main {
             }
         }
     }
+
     private static void OrderScreen() {
         Order order = new Order(); // Create a new order
         //Display the Order Screen menu
@@ -67,8 +67,25 @@ public class Main {
         }
     }
 
+    private static OrderItems addChips() {
+        System.out.println("\n--- Add Chips ---");
+        System.out.println("Jalapeño");
+        System.out.println("Salt & Vinegar");
+        System.out.println("Sour Cream & Onion");
+        System.out.println("BBQ");
+        System.out.println("Classic");
+
+        String choice = ConsoleHelper.promptForString("Choose a Flavor");
+        return new Chips(choice);
+    }
+
     private static void checkout(Order order) {
         System.out.println("\n--- Checkout ---");
+        // must have at least one sandwich OR chips/drink
+        if (order.getSandwichCount() == 0 && !order.hasChipsOrDrink()) {
+            System.out.println("You must order at least one sandwich or chips or drink.");
+            return;
+        }
         order.displayOrderDetails(); //show order summary
         String confirm = ConsoleHelper.promptForString("Would you like to confirm your order? (yes/no)");
 
@@ -86,132 +103,108 @@ public class Main {
         System.out.println("1) Small ($2.00)");
         System.out.println("2) Medium ($2.50)");
         System.out.println("3) Large ($3.00)");
-        String sizeChoice = ConsoleHelper.promptForString("Enter your choice");
+        String size = ConsoleHelper.promptForString("Enter your Size");
+        String flavor = ConsoleHelper.promptForString("Which flavor would you like");
 
-        String size ;
-        switch (sizeChoice) {
-            case "1":
-                size = "Small";
-                break;
-            case "2":
-                size = "Medium";
-                break;
-            case "3":
-                size = "Large";
-                break;
-            default:
-                System.out.println("Invalid choice. Please choose size between 1 - 3");
-                return null;
-        }
-        // Ask for drink flavor
-        System.out.println("\nSelect drink flavor:");
-        System.out.println("1) Coke");
-        System.out.println("2) Sprite");
-        System.out.println("3) Lemonade");
-        System.out.println("4) Root Beer");
-        System.out.println("5) Iced Tea");
-        String flavorChoice = ConsoleHelper.promptForString("Enter your choice");
-
-        String flavor;
-        switch (flavorChoice) {
-            case "1":
-                flavor = "Coke";
-                break;
-            case "2":
-                flavor = "Sprite";
-                break;
-            case "3":
-                flavor = "Lemonade";
-                break;
-            case "4":
-                flavor = "Root Beer";
-                break;
-            case "5":
-                flavor = "Iced Tea";
-                break;
-            default:
-                System.out.println("Invalid choice. Please choose a flavor between 1 and 5.");
-                return null; // Exit the method without adding a drink
-
-        }
-        Drink drink = new Drink(size, flavor);
-        System.out.println(size + " " + flavor + " added successfully!");
-        return drink;
-    }
-
-    private static OrderItems addChips() {
-        System.out.println("\n--- Add Chips ---");
-        System.out.println("Select chip type:");
-        System.out.println("1) Classic");
-        System.out.println("2) BBQ");
-        System.out.println("3) Sour Cream & Onion");
-        System.out.println("4) Salt & Vinegar");
-        System.out.println("5) Jalapeño");
-        String chipChoice = ConsoleHelper.promptForString("Enter your choice");
-        String type = "";
-        switch (chipChoice) {
-            case "1":
-                type = "Classic";
-                break;
-            case "2":
-                type = "BBQ";
-                break;
-            case "3":
-                type = "Sour Cream & Onion";
-                break;
-            case "4":
-                type = "Salt & Vinegar";
-                break;
-            case "5":
-                type = "Jalapeño";
-                break;
-            default:
-                System.out.println("Invalid choice. Defaulting to Classic.");
-                type = "Classic";
-        }
-
-        Chips chips = new Chips(type);
-        System.out.println(type + " Chips added successfully!");
-        return chips;
+        return new Drink(size, flavor);
     }
 
     private static OrderItems addSandwich() {
         System.out.println("\n--- Add Sandwich ---");
-        // Step 1: Select bread and size
-        String size = ConsoleHelper.promptForString("Enter sandwich size (4, 8, 12)");
-        String bread = ConsoleHelper.promptForString("Enter bread type (white, wheat, rye, wrap)");
+        int breadOption;
+        while (true) {
+            System.out.println("Choose your bread Type");
+            for (int i = 0; i < Bread.types.length; i++) {
+                System.out.println((i + 1) + ") " + Bread.types[i]);
+            }
+            breadOption = ConsoleHelper.promptForInt("Enter bread Option");
+            if (breadOption >= 1 && breadOption <= Bread.types.length) {
+                break;
+            }
+            System.out.println("Invalid Input, Choose from Menu");
+        }
+        String breadType = Bread.types[breadOption - 1];
+        String breadsize;
 
+        while (true) {
+            breadsize = ConsoleHelper.promptForString("Choose your size (4,8,12 Inches)");
+            if (breadsize.equals("4") || breadsize.equals("8") || breadsize.equals("12")) {
+                break;
+            }
+            System.out.println("Invalid size! Please enter only 4, 8,OR 12.");
+        }
         boolean toasted;
         while (true) {
-            String t = ConsoleHelper.promptForString("Toasted? (Y/N) ");
-            if (t.equalsIgnoreCase("Y")) {
+            String t = ConsoleHelper.promptForString("Would you like it toasted? (Yes/No)");
+            if (t.equalsIgnoreCase("Yes")) {
                 toasted = true;
                 break;
-            } else if (t.equalsIgnoreCase("N")) {
+            } else if (t.equalsIgnoreCase("No")) {
                 toasted = false;
                 break;
             }
-            System.out.println("Invalid input! Please enter Y or N only.");
+            System.out.println("Invalid input! Please enter Yes or No.");
         }
+        Sandwich sandwich = new Sandwich(breadsize, breadType, toasted);
+        String[] choice = null;
 
-//Create a new Sandwich object using the chosen bread, size, and toasted option
-        Sandwich s = new Sandwich(bread, size, toasted);
-
-            while (true) {     // Step 2: Add toppings
-                System.out.println("\nChoose topping category:");
-                System.out.println("1) Meat");
-                System.out.println("2) Cheese");
-                System.out.println("3) Regular Topping");
-                System.out.println("4) Sauce");
-                System.out.println("5) Sides");
-                System.out.println("0) if you done");
-                String categoryChoice = ConsoleHelper.promptForString("Enter your choice");
-
-                String type;
-                String name;
-
+        String ty;
+        while (true) {
+            ty = ConsoleHelper.promptForString("Topping type: MEAT, CHEESE, REG, SAUCE , SIDE , DONE ").toUpperCase();
+            if (ty.equals("DONE"))
+                break;
+            switch (ty) {
+                case "MEAT":
+                    choice = AllTopping.Meat;
+                    break;
+                case "CHEESE":
+                    choice = AllTopping.Cheese;
+                    break;
+                case "REG":
+                    choice = AllTopping.Regular;
+                    break;
+                case "SAUCE":
+                    choice = AllTopping.Sauce;
+                    break;
+                case "SIDE":
+                    choice = AllTopping.Side;
+                    break;
+                default:
+                    System.out.println("Invalid type! Please choose Your Meat,Cheese,Regular,Sauce or Side.");
+                    continue;
             }
-        }
 
+            System.out.println("Available " + ty + " toppings");
+            for (int i = 0; i < choice.length; i++) {
+                System.out.println((i + 1) + ") " + choice[i]); //List toppings
+            }
+            int Option;
+            while (true) {
+                Option = ConsoleHelper.promptForInt("Topping?");
+                if (Option >= 1 && Option <= choice.length) break;
+                System.out.println("Invalid Input, try again.");
+            }
+            boolean more = false;
+            if (ty.equals("Meat") || ty.equals("Cheese")) {
+                while (true) { // Keep asking until valid input
+                    String moreInput = ConsoleHelper.promptForString(" More Toppings (Yes /No): ");
+                    if (moreInput.equalsIgnoreCase("Yes")) {
+                        more = true;
+                        break;
+                    } else if (moreInput.equalsIgnoreCase("No")) {
+                        more = false;
+                        break; // exit The loop
+                    } else {
+                        System.out.println("Invalid input! Please enter only Yes or No."); // invalid
+                    }
+                }
+            }
+            sandwich.addTopping(new Topping(choice[Option - 1], ty, more));
+        }
+        return sandwich;
     }
-// line 354
+
+
+     }
+
+

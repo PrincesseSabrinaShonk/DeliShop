@@ -3,15 +3,15 @@ import java.util.ArrayList;
 
 //Instance variables
 public class Sandwich extends OrderItems {
-    private String size;
+    private String breadsize;  // 4/8/12
     private String breadType;
     private boolean toasted;
     private ArrayList<Topping> toppings = new ArrayList<>();
 
 
     // Constructor
-    public Sandwich(String size, String breadType, boolean toasted) {
-        this.size = size;
+    public Sandwich(String breadsize, String breadType, boolean toasted) {
+        this.breadsize = breadsize;
         this.breadType = breadType;
         this.toasted = toasted;
     }
@@ -29,9 +29,9 @@ public class Sandwich extends OrderItems {
     public double getPrice() {
         double basePrice = 0;
         // Set the base price depending on sandwich size
-        if(size.equals("4")) basePrice = 5.50;
-        else if(size.equals("8")) basePrice = 7.00;
-        else if(size.equals("12")) basePrice = 8.50;
+        if(breadsize.equals("4")) basePrice = 5.50;
+        else if(breadsize.equals("8")) basePrice = 7.00;
+        else if(breadsize.equals("12")) basePrice = 8.50;
 
 
         // Start total with the base bread price
@@ -40,16 +40,16 @@ public class Sandwich extends OrderItems {
         for(Topping topping: toppings) {
             if(topping.getType().equals("MEAT")) {    // If the topping is meat
                 // Add meat price depending on sandwich size and whether it's extra
-                if(size.equals("4")) total += topping.isExtra() ? 0.50 : 1.00;
-                else if(size.equals("8")) total += topping.isExtra() ? 1.00 : 2.00;
-                else if(size.equals("12")) total += topping.isExtra() ? 1.50 : 3.00;
+                if(breadsize.equals("4")) total += topping.isExtra() ? 0.50 : 1.00;
+                else if(breadsize.equals("8")) total += topping.isExtra() ? 1.00 : 2.00;
+                else if(breadsize.equals("12")) total += topping.isExtra() ? 1.50 : 3.00;
 
             } else if(topping.getType().equals("CHEESE")) {    // If the topping is cheese
 
                 // Add cheese price depending on sandwich size and whether it's extra
-                if(size.equals("4")) total += topping.isExtra() ? 0.30 : 0.75;
-                else if(size.equals("8")) total += topping.isExtra() ? 0.60 : 1.50;
-                else if(size.equals("12")) total += topping.isExtra() ? 0.90 : 2.25;
+                if(breadsize.equals("4")) total += topping.isExtra() ? 0.30 : 0.75;
+                else if(breadsize.equals("8")) total += topping.isExtra() ? 0.60 : 1.50;
+                else if(breadsize.equals("12")) total += topping.isExtra() ? 0.90 : 2.25;
             }
         }
         //Return the final total price of the sandwich including all topping
@@ -58,7 +58,7 @@ public class Sandwich extends OrderItems {
     @Override
     public String getDescription() {
         StringBuilder sb = new StringBuilder();
-        sb.append(size).append("\" ").append(breadType).append(" (Toasted: ").append(toasted).append(")\nToppings: ");
+        sb.append(breadsize).append("\" ").append(breadType).append(" (Toasted: ").append(toasted).append(")\nToppings: ");
         for (int i = 0; i < toppings.size(); i++) {
             Topping t = toppings.get(i);
             sb.append(t.getName());
@@ -71,7 +71,7 @@ public class Sandwich extends OrderItems {
     @Override
     public String toString() {
         return "Sandwich{" +
-                "size='" + size + '\'' +
+                "breadsize='" + breadsize + '\'' +
                 ", breadType='" + breadType + '\'' +
                 ", toasted=" + toasted +
                 '}';
