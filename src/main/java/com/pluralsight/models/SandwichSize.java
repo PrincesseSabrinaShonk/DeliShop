@@ -1,4 +1,4 @@
-package com.pluralsight;
+package com.pluralsight.models;
 
 public class SandwichSize {
     public static String[] size= {

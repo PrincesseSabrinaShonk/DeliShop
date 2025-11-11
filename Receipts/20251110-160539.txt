@@ -1,0 +1,14 @@
+===== DELI-SHOP Receipt =====
+Date: 11/10/2025 04:05:39 PM
+================================
+
+---- Sandwiches ----
+1. 4" White (Toasted: Yes)
+   Toppings: Steak (extra) +$1.50, American, Lettuce, Mayo, Au Jus
+   Price: $7.75
+
+================================
+Total: $7.75
+================================
+
+Thank you for choosing DELI-SHOP!

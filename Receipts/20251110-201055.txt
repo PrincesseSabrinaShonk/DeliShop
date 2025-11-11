@@ -1,0 +1,20 @@
+===== DELI-SHOP Receipt =====
+Date: 11/10/2025 08:10:55 PM
+================================
+
+---- Sandwiches ----
+1. 8" White (Toasted: Yes)
+   Toppings: Steak (extra), American (extra), Lettuce, Mayo, Au Jus
+   Price: $8.60
+2. 8" white (Toasted: Yes)
+   Toppings: Bacon, Cheddar, Lettuce, Tomato, Ranch
+   Price: $10.50
+3. 8" white (Toasted: Yes)
+   Toppings: Steak, American, Peppers, Mayo
+   Price: $10.50
+
+================================
+Total: $29.60
+================================
+
+Thank you for choosing DELI-SHOP!

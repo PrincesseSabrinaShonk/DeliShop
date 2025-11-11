@@ -1,0 +1,17 @@
+===== DELI-SHOP Receipt =====
+Date: 11/10/2025 12:03:37 PM
+================================
+
+---- Sandwiches ----
+1. 8" White (Toasted: true)
+Toppings: Salami
+   Price: $9.00
+
+---- Drinks ----
+1. Medium jeep Drink - $2.50
+
+================================
+Total: $11.50
+================================
+
+Thank you for choosing DELI-SHOP!

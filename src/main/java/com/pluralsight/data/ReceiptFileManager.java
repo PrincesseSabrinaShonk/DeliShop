@@ -1,28 +1,24 @@
-package com.pluralsight;
+package com.pluralsight.data;
+import com.pluralsight.models.Chips;
+import com.pluralsight.models.Drink;
+import com.pluralsight.models.Order;
+import com.pluralsight.models.Sandwich;
 
-import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
-
 public class ReceiptFileManager {
-    //Saves the order details to a receipt file in the receipt folder.
+
     public static void saveReceipt(Order order) {
 
-        LocalDateTime now = LocalDateTime.now();
-        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyyMMdd-HHmmss");
-        String filename = "receipts/" + now.format(formatter) + ".txt";
         try {
-            // Create the receipts folder if it doesn't exist
-            File folder = new File("receipts");
-            if (!folder.exists()) {
-                folder.mkdir();
-            }
+            LocalDateTime now = LocalDateTime.now();
+            DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyyMMdd-HHmmss");
+            String filename = "receipts/" + now.format(formatter) + ".txt";
+
             // Create a FileWriter to write to the receipt file
             FileWriter w = new FileWriter(filename);
-
-            // Write the receipt header with date/time
             w.write("===== DELI-SHOP Receipt =====\n");
             w.write("Date: " + now.format(DateTimeFormatter.ofPattern("MM/dd/yyyy hh:mm:ss a")) + "\n");
             w.write("================================\n\n");
@@ -37,23 +33,29 @@ public class ReceiptFileManager {
                 }
                 w.write("\n");  // Add an empty line after listing all sandwiches for readability
             }
+
+
             // Write all drinks in the order
             if (!order.getDrinks().isEmpty()) {
                 w.write("---- Drinks ----\n");
+                w.write("-------------------------\n");
                 for (int i = 0; i < order.getDrinks().size(); i++) {
                     Drink drink = order.getDrinks().get(i);
                     w.write((i + 1) + ". " + drink.toString() + "\n");
                 }
                 w.write("\n");
-            }
 
+            }
             // Write all chips in the order
+
             if (!order.getChips().isEmpty()) {
                 w.write("---- Chips ----\n");
+                w.write("------------------------\n");
                 for (int i = 0; i < order.getChips().size(); i++) {
                     Chips chip = order.getChips().get(i);
                     w.write((i + 1) + ". " + chip.toString() + "\n");
                 }
+
                 w.write("\n");
             }
             // Write the total price
@@ -65,10 +67,12 @@ public class ReceiptFileManager {
             // Close the writer to save the file
             w.close();
             System.out.println("\n Receipt saved successfully to: " + filename);
-
         } catch (IOException e) {
             // Handle any file writing errors
             System.out.println("Error saving receipt: " + e.getMessage());
+
         }
+
     }
+
 }

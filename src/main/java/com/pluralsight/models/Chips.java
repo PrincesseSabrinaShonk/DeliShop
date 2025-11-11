@@ -1,4 +1,4 @@
-package com.pluralsight;
+package com.pluralsight.models;
 
 public class Chips extends OrderItems {        //Instance variables
     private String type;
@@ -20,7 +20,7 @@ public class Chips extends OrderItems {        //Instance variables
 
     // Override methods from OrderItems
     @Override
-    public double getPrice() {     // Returns the fixed price for chips
+    public double getPrice() {     // Returns the fixed price for chip
         return price;
     }
 

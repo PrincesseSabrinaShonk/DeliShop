@@ -1,0 +1,17 @@
+===== DELI-SHOP Receipt =====
+Date: 11/10/2025 10:45:08 AM
+================================
+
+---- Sandwiches ----
+1. 4" Wheat (Toasted: true)
+Toppings: Steak, American, Lettuce, Mayo
+   Price: $7.25
+
+---- Drinks ----
+1. Medium coke Drink - $2.50
+
+================================
+Total: $9.75
+================================
+
+Thank you for choosing DELI-SHOP!

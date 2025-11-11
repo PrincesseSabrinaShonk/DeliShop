@@ -1,11 +1,11 @@
-package com.pluralsight;
-import java.util.ArrayList;
+package com.pluralsight.models;
 
-   // Lists to hold the different types of order items
+import java.util.ArrayList;
 public class Order {
     private ArrayList<Sandwich> sandwiches ;
     private ArrayList<Drink> drinks;
     private ArrayList<Chips> chips;
+
 
 
     // Constructor initializes the lists when a new Order is created
@@ -61,6 +61,7 @@ public class Order {
         return sandwiches.isEmpty() && drinks.isEmpty() && chips.isEmpty();
 
     }
+
     // Get the number of sandwiches in the order.
     public int getSandwichCount() {
         return sandwiches.size();
@@ -71,38 +72,48 @@ public class Order {
         return !drinks.isEmpty() || !chips.isEmpty();
     }
 
-    // Display a detailed summary of the order in the console.
-    public void displayOrderDetails() {
-        if (isEmpty()) {      // If the order is empty, print a message and stop.
-            System.out.println("No items in your order.");
-            return;
-        }
-        System.out.println("\n===== ORDER SUMMARY =====");
+    public String getOrderDetails(){
+        StringBuilder details = new StringBuilder();
 
-        if (!sandwiches.isEmpty()) {     // Show all sandwiches with their index numbers.
-            System.out.println("\n---- Sandwiches ----");
+        details.append("\n===== ORDER SUMMARY =====\n");
+        if (!sandwiches.isEmpty()) {
+            details.append("\n---- Sandwiches ----\n");
             for (int i = 0; i < sandwiches.size(); i++) {
-                System.out.println((i + 1) + ". " + sandwiches.get(i));
+                details.append((i + 1)).append(". ").append(sandwiches.get(i).getDescription()).append("\n");
+                details.append(String.format("   Price: $%.2f%n", sandwiches.get(i).getPrice()));
             }
         }
 
         if (!drinks.isEmpty()) {
-            System.out.println("---- Drinks ----");   // Display all drinks
+            details.append("\n---- Drinks ----\n");
             for (int i = 0; i < drinks.size(); i++) {
-                System.out.println((i + 1) + ". " + drinks.get(i));
+                details.append((i + 1)).append(". ").append(drinks.get(i).toString()).append("\n");
             }
         }
-
         if (!chips.isEmpty()) {
-            System.out.println("---- Chips ----");      // Display all chips
+            details.append("\n---- Chips ----\n");
             for (int i = 0; i < chips.size(); i++) {
-                System.out.println((i + 1) + ". " + chips.get(i));
+                details.append((i + 1)).append(". ").append(chips.get(i).toString()).append("\n");
             }
         }
-        //  // Display the total cost at the end
-        System.out.printf("\nTotal: $%.2f%n", calculateTotal());
-        System.out.println("========================\n");
+        details.append(String.format("\nTotal: $%.2f%n", calculateTotal()));
+        details.append("========================\n");
+        return details.toString();
     }
-}
+
+    // Display a detailed summary of the order in the console.
+    public void displayOrderDetails() {
+        if (isEmpty()) {      // If the order is empty, print a message and stop
+            System.out.println("No items in your order.");
+            return;
+        }
+        System.out.println(getOrderDetails());
+    }
+
+    public void addSignatureSandwich(Sandwich sandwich) {
+        sandwiches.add(sandwich);
+
+       }
+   }
 
 

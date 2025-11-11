@@ -1,7 +1,7 @@
-package com.pluralsight;
+package com.pluralsight.models;
 
 public class Drink extends OrderItems {    // --- Instance variables ---
-    private String size;                    // small, medium, or large
+    private String size;                    // small, medium, or large drink
     private String flavor;                  // the flavor of the drink: Coke, Sprite, Lemonade
 
 
@@ -46,7 +46,7 @@ public class Drink extends OrderItems {    // --- Instance variables ---
     // Returns a short description of the drink
     @Override
     public String getDescription() {
-        return size +"Drink (" + flavor +  ")";
+        return size.substring(0, 1).toUpperCase() + size.substring(1) + " " + flavor + " Drink";
 
     }
 

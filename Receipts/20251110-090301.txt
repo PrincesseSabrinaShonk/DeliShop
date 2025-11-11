@@ -1,0 +1,14 @@
+===== DELI-SHOP Receipt =====
+Date: 11/10/2025 09:03:01 AM
+================================
+
+---- Sandwiches ----
+1. 4" White (Toasted: true)
+Toppings: Steak, Ham
+   Price: $7.50
+
+================================
+Total: $7.50
+================================
+
+Thank you for choosing DELI-SHOP!
