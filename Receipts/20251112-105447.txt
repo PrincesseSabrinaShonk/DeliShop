@@ -1,0 +1,14 @@
+===== DELI-SHOP Receipt =====
+Date: 11/12/2025 10:54:47 AM
+================================
+
+---- Sandwiches ----
+1. 12" White (Toasted: Yes)
+   Toppings: Ham, Lettuce
+   Price: $11.50
+
+================================
+Total: $11.50
+================================
+
+Thank you for choosing DELI-SHOP!

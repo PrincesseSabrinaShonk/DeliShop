@@ -45,5 +45,4 @@ public class AllTopping {
         this.category = category;
         this.extra = extra;
     }
-
  }

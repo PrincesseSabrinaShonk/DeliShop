@@ -4,7 +4,7 @@ package com.pluralsight.models;
 public abstract class OrderItems {
 
     public abstract double getPrice();
-
     public abstract String getDescription();
 
 }
+// The job of the abstract class is to get the price and description

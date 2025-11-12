@@ -52,11 +52,12 @@ public class Topping {
     }
 
     @Override
-    public String toString() {
+    public String toString() {                          // If the item is marked as "extra" but has no additional cost,
+                                                       // just show the name with "(extra)" appended.
         if (extra && extraPrice > 0) {
             return String.format("%s (extra) +$%.2f", name, extraPrice);
         }
-        else if (extra) {
+        else if (extra) {                               // Otherwise, if the item is not an extra, return only its name.
             return name + " (extra)";
         }
         else {

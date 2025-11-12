@@ -2,16 +2,14 @@ package com.pluralsight.models;
 
 import java.util.ArrayList;
 public class Order {
-    private ArrayList<Sandwich> sandwiches ;
+    private ArrayList<Sandwich> sandwiches;
     private ArrayList<Drink> drinks;
     private ArrayList<Chips> chips;
 
-
-
     // Constructor initializes the lists when a new Order is created
-    public Order(){
-        this.drinks =new ArrayList<>();
-        this.chips =new ArrayList<>() ;
+    public Order() {
+        this.drinks = new ArrayList<>();
+        this.chips = new ArrayList<>();
         this.sandwiches = new ArrayList<>();
     }
 
@@ -32,9 +30,11 @@ public class Order {
     public ArrayList<Sandwich> getSandwiches() {
         return sandwiches;
     }
+
     public ArrayList<Drink> getDrinks() {
         return drinks;
     }
+
     public ArrayList<Chips> getChips() {
         return chips;
     }
@@ -54,10 +54,11 @@ public class Order {
         }
         return total;
 
-     }
-           // Utility methods
-     // Check if the order is empty
-      public boolean isEmpty() {
+    }
+
+    // Utility methods
+    // Check if the order is empty
+    public boolean isEmpty() {
         return sandwiches.isEmpty() && drinks.isEmpty() && chips.isEmpty();
 
     }
@@ -72,14 +73,16 @@ public class Order {
         return !drinks.isEmpty() || !chips.isEmpty();
     }
 
-    public String getOrderDetails(){
-        StringBuilder details = new StringBuilder();
+    public String getOrderDetails() {
+        StringBuilder details = new StringBuilder();    // Use StringBuilder for efficient string concatenation
 
         details.append("\n===== ORDER SUMMARY =====\n");
-        if (!sandwiches.isEmpty()) {
+        if (!sandwiches.isEmpty()) {                          // Check if there are any sandwiches in the order
             details.append("\n---- Sandwiches ----\n");
-            for (int i = 0; i < sandwiches.size(); i++) {
-                details.append((i + 1)).append(". ").append(sandwiches.get(i).getDescription()).append("\n");
+            for (int i = 0; i < sandwiches.size(); i++) {      // Loop through all sandwiches in the order
+                details.append((i + 1))
+                        .append(". ").append(sandwiches.get(i).getDescription())
+                        .append("\n");
                 details.append(String.format("   Price: $%.2f%n", sandwiches.get(i).getPrice()));
             }
         }
@@ -87,13 +90,17 @@ public class Order {
         if (!drinks.isEmpty()) {
             details.append("\n---- Drinks ----\n");
             for (int i = 0; i < drinks.size(); i++) {
-                details.append((i + 1)).append(". ").append(drinks.get(i).toString()).append("\n");
+                details.append((i + 1))
+                        .append(". ")
+                        .append(drinks.get(i).toString()).append("\n");
             }
         }
         if (!chips.isEmpty()) {
             details.append("\n---- Chips ----\n");
             for (int i = 0; i < chips.size(); i++) {
-                details.append((i + 1)).append(". ").append(chips.get(i).toString()).append("\n");
+                details.append((i + 1))
+                        .append(". ")
+                        .append(chips.get(i).toString()).append("\n");
             }
         }
         details.append(String.format("\nTotal: $%.2f%n", calculateTotal()));
@@ -102,13 +109,13 @@ public class Order {
     }
 
     // Display a detailed summary of the order in the console.
-    public void displayOrderDetails() {
+    public String displayOrderDetails() {
         if (isEmpty()) {      // If the order is empty, print a message and stop
-            System.out.println("No items in your order.");
-            return;
+            return "No items in your order.";
         }
-        System.out.println(getOrderDetails());
-    }
+        return getOrderDetails();
+    }   // todo display as String
+
 
     public void addSignatureSandwich(Sandwich sandwich) {
         sandwiches.add(sandwich);
