@@ -1,0 +1,23 @@
+===== DELI-SHOP Receipt =====
+Date: 11/12/2025 03:06:28 PM
+================================
+========================================
+       WELCOME TO OUR DELI-SHOP!       
+========================================
+------------ SANDWICHES ---------------
+1) 8" white (Toasted: Yes)
+   Toppings: Bacon, Cheddar, Lettuce, Tomato, Ranch, Steak (extra)
+   Price: $11.50
+----------------------------------------
+2) 4" White (Toasted: Yes)
+   Toppings: American (extra), Steak, Provolone
+   Price: $7.55
+----------------------------------------
+3) 4" White (Toasted: Yes)
+   Toppings: American (extra), American
+   Price: $6.55
+----------------------------------------
+========================================
+ RECEIPT TOTAL: $25.60
+========================================
+Thank you for visiting our DELI-SHOP!

@@ -1,68 +1,40 @@
 package com.pluralsight.Userinterface;
 
-import java.time.LocalDate;
-import java.time.LocalTime;
+import com.pluralsight.models.*;
+
+import java.util.ArrayList;
 import java.util.Scanner;
+import java.util.function.IntPredicate;
 
 public class ConsoleHelper {
-    private static Scanner scanner = new Scanner(System.in);
+    private static  final Scanner scanner = new Scanner(System.in);
 
-    //  Prompts the user for a string input
+    // ======= BASIC INPUT METHODS =======
     public static String promptForString(String prompt) {
         System.out.print(prompt + ": ");
-        return scanner.nextLine();
+        return scanner.nextLine().trim();
     }
 
-    //Prompts the user for an integer input and validates it.
     public static int promptForInt(String prompt) {
-        int result;
-
         while (true) {
             System.out.print(prompt + ": ");
-            String input = scanner.nextLine().trim(); // read inside the loop
-
+            String input = scanner.nextLine().trim();
             try {
-                result = Integer.parseInt(input);
-                return result; // valid integer entered
+                return Integer.parseInt(input);
             } catch (NumberFormatException e) {
                 System.out.println("Invalid input! Please enter a number.");
             }
         }
     }
 
-    public static double promptForDouble(String prompt) {
+    public static boolean getYesNoChoice(String question) {
+        System.out.println("\n" + question);
+        System.out.println("1) Yes\n2) No");
         while (true) {
-            try {
-                System.out.print(prompt + ": ");
-                String input = scanner.nextLine();
-                return Double.parseDouble(input);
-            } catch (NumberFormatException e) {
-                System.out.println("Invalid input. Please enter a number.");
-            }
-        }
-    }
-
-    public static LocalDate promptForDate(String prompt) {
-        while (true) {
-            try {
-                System.out.print(prompt + ": ");
-                String dateAsString = scanner.nextLine();
-                return LocalDate.parse(dateAsString);
-            } catch (Exception e) {
-                System.out.println("Invalid date. Use YYYY-MM-DD.");
-            }
-        }
-    }
-
-    public static LocalTime promptForTime(String prompt) {
-        while (true) {
-            try {
-                System.out.print(prompt + ": ");
-                String timeAsString = scanner.nextLine();
-                return LocalTime.parse(timeAsString);
-            } catch (Exception e) {
-                System.out.println("Invalid time. Use HH:MM:SS.");
-            }
+            int choice = promptForInt("Enter your choice (1-2)");
+            if (choice == 1) return true;
+            if (choice == 2) return false;
+            System.out.println("Invalid choice! Please enter 1 or 2.");
         }
     }
 
@@ -73,7 +45,6 @@ public class ConsoleHelper {
         }
     }
 
-    // Displays simple list of options to the console.
     public static void displayOptions(String header, String[] options, String suffix) {
         System.out.println("\n" + header);
         for (int i = 0; i < options.length; i++) {
@@ -81,27 +52,118 @@ public class ConsoleHelper {
         }
     }
 
-    // Displays a numbered list of options with a valid (like price, size, or unit).
-    public static int getValidatedOption(String prompt, int max, java.util.function.IntPredicate validator) {
+    public static int getValidatedOption(String prompt, int max, IntPredicate validator) {
         int option;
         while (true) {
-            option = ConsoleHelper.promptForInt(prompt);
+            option = promptForInt(prompt);
             if (validator.test(option)) break;
             System.out.println("Invalid choice! Please select a number between 1 and " + max);
         }
         return option;
     }
 
-   //Prompts the user for a numeric choice and validates it using a condition.
-    public static boolean getYesNoChoice(String question) {
-        System.out.println("\n" + question);
-        System.out.println("1) Yes\n2) No");
+       // ======= TOPPING METHODS =======
+    public static void addToppingsToSandwich(Sandwich sandwich) {
         while (true) {
-            int choice = ConsoleHelper.promptForInt("Enter your choice (1-2)");
-            if (choice == 1) return true;  // true if user said yes
-            if (choice == 2) return false;   // false if the user said no
-            System.out.println("Invalid choice! Please enter 1 or 2.");
+            System.out.println("\nSelect topping category:");
+            System.out.println("1) Meat (Premium)\n2) Cheese (Premium)\n3) Regular Toppings\n4) Sauces\n5) Sides\n6) Done adding toppings");
+
+            int categoryChoice = promptForInt("Enter your choice (1-6)");
+            if (categoryChoice == 6) break;
+            String[] toppingArray;
+            String categoryType;
+            switch (categoryChoice) {
+                case 1 -> {
+                    toppingArray = AllTopping.Meat;
+                    categoryType = "MEAT";
+                }
+                case 2 -> {
+                    toppingArray = AllTopping.Cheese;
+                    categoryType = "CHEESE";
+                }
+                case 3 -> {
+                    toppingArray = AllTopping.Regular;
+                    categoryType = "REGULAR";
+                }
+                case 4 -> {
+                    toppingArray = AllTopping.Sauce;
+                    categoryType = "SAUCE";
+                }
+                case 5 -> {
+                    toppingArray = AllTopping.Side;
+                    categoryType = "SIDE";
+                }
+                default -> {
+                    System.out.println("Invalid choice!");
+                    continue;
+                }
+            }
+
+            displayOptions("Available " + categoryType + " toppings:", toppingArray);
+            int toppingOption = getValidatedOption("Choose topping (1-" + toppingArray.length + ")", toppingArray.length, i -> i >= 1 && i <= toppingArray.length);
+            String toppingName = toppingArray[toppingOption - 1];
+
+            boolean extra = false;
+            if (categoryType.equals("MEAT") || categoryType.equals("CHEESE")) {
+                extra = getYesNoChoice("Would you like EXTRA " + toppingName + "?");
+                if (extra) {
+                    double extraCost = sandwich.getExtraPrice(new Topping(toppingName, categoryType, true));
+                    System.out.println("Added extra " + toppingName + " ($" + String.format("%.2f", extraCost) + ")");
+                } else {
+                    System.out.println(toppingName + " added successfully! (No extra charge)");
+                }
+            } else {
+                if (getYesNoChoice("Would you like to add " + toppingName + "?")) {
+                    System.out.println(toppingName + " added successfully! (Free topping)");
+                } else {
+                    System.out.println("No topping added.");
+                    continue;
+                }
+            }
+
+            sandwich.addTopping(new Topping(toppingName, categoryType, extra));
         }
+    }
+    public static void modifyToppings(Sandwich sandwich){
+            while (true) {
+                ArrayList<Topping> toppings = sandwich.getToppings();
+                System.out.println("\nCurrent Toppings:");
+                if (toppings.isEmpty()) System.out.println("No toppings yet.");
+                else for (int i = 0; i < toppings.size(); i++)
+                    System.out.println((i + 1) + ") " + toppings.get(i).getName());
+
+                System.out.println("\n1) Add Topping\n2) Remove Topping\n3) Done");
+                int choice = promptForInt("Enter your choice (1-3)");
+
+                switch (choice) {
+                    case 1 -> addToppingsToSandwich(sandwich);
+                    case 2 -> {
+                        if (toppings.isEmpty()) {
+                            System.out.println("No toppings to remove.");
+                            break;
+                        }
+                        int removeIndex = promptForInt("Enter the number of the topping to remove:");
+                        if (removeIndex >= 1 && removeIndex <= toppings.size()) {
+                            Topping removed = toppings.get(removeIndex - 1);
+
+                            System.out.println(removed.getName() + " removed.");
+                        } else System.out.println("Invalid selection.");
+                    }
+                    case 3 -> {
+                        return;
+                    }
+                    default -> System.out.println("Invalid choice. Try again.");
+                }
+            }
+    }
+
+    public static void modifySignatureSandwich(Sandwich sandwich){
+        System.out.println("\n--- Modify Signature Sandwich ---");
+        modifyToppings(sandwich);
+        System.out.println("\nFinal Signature Sandwich:");
+        System.out.println(sandwich.getDescription());
+        System.out.println("Total Price: $" + String.format("%.2f", sandwich.getPrice()));
+        System.out.println("========================================\n");
     }
 }
 

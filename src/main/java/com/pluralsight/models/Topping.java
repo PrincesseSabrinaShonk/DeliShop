@@ -50,6 +50,10 @@ public class Topping {
     public void setExtraPrice(double extraPrice) {
         this.extraPrice = extraPrice;
     }
+    public static boolean isValidOptions(int choice, String[] options) {
+        // Returns true if the choice number is between 1 and the length of the array
+        return choice >= 1 && choice <= options.length;
+    }
 
     @Override
     public String toString() {                          // If the item is marked as "extra" but has no additional cost,
