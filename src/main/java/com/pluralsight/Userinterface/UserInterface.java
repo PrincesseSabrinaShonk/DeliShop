@@ -150,44 +150,45 @@ public class UserInterface {
         }
         System.out.println("\nAvailable Flavors:");  // Display all available drink flavors
 
+        // Loop through all available drink flavors and display them to the user
         for (String flavorOption : DrinkFlavor.flavors) {
             System.out.println("- " + flavorOption);
         }
         String flavor = ConsoleHelper.promptForString("Which flavor would you like"); // Prompt user to select a flavor
-
         Drink drink = new Drink(size, flavor);  // Create a new Drink object based on user selection
 
         // Confirm the drink was added
         System.out.println(size.substring(0, 1).toUpperCase() + size.substring(1) + " "
                 + flavor + " drink added successfully! ($" + String.format("%.2f", drink.getPrice()) + ")\n");
         return drink;
-    }   // need to implement
+    }
 
+    //Display how to add sandwich
 
     private static OrderItems addSandwich() {
         System.out.println("\n---ADD SANDWICH---");
-        // Choose bread
+        // Choose bread  type for the sandwich
         displayOptions("Choose your bread type:", Bread.types);
         int breadOption = getValidatedOption("Enter bread option (1-" + Bread.types.length + ")", Bread.types.length, Bread::isValid);
-        String breadType = Bread.types[breadOption - 1];
+        String breadType = Bread.types[breadOption - 1]; // Prompt user and validate input
 
         // Choose size
-        displayOptions("Choose your sandwich size:", SandwichSize.size, " Inches");
-        int sizeOption = getValidatedOption("Enter size option (1-3)", 3, i -> i >= 1 && i <= 3);
-        String breadSize = SandwichSize.size[sizeOption - 1];
+        displayOptions("Choose your sandwich size:", SandwichSize.size, " Inches");// Display a list of available bread types for the user to choose from
+        int sizeOption = getValidatedOption("Enter size option (1-3)", 3, i -> i >= 1 && i <= 3);// using Lambda exp
+        String breadSize = SandwichSize.size[sizeOption - 1];  // Get the corresponding size from the SandwichSize array (adjusting for 0-based indexing)
 
-        // Toasted
+        // // Choose whether the sandwich should be toasted
         boolean toasted = getYesNoChoice("Would you like it toasted?");
         Sandwich sandwich = new Sandwich(breadSize, breadType, toasted);
 
-        System.out.println("\n" + breadSize + "\" " + breadType + " sandwich created!");
+        System.out.println("\n" + breadSize + "\" " + breadType + " sandwich created!");  // Display sandwich creation summary
         System.out.println("Base price: $" + String.format("%.2f", sandwich.getPrice()));
         if (toasted) System.out.println("Toasted: Yes");
 
-        // Add toppings
+        // Add toppings to the sandwich
         addToppingsToSandwich(sandwich);
 
-        // summary
+        //  Display final sandwich summary
         double finalPrice = sandwich.getPrice();
         System.out.println("\n========================================");
         System.out.println("     SANDWICH ADDED SUCCESSFULLY!");
@@ -195,23 +196,24 @@ public class UserInterface {
         System.out.println(sandwich.getDescription());
         System.out.println("\nTotal Sandwich Price: $" + String.format("%.2f", finalPrice));
         System.out.println("========================================\n");
-        return sandwich;
+        return sandwich; // Return the created Sandwich object
 
+    // Allows the user to select a pre-made signature sandwich
     }
-
+    // Display signature Sandwich
     private static Sandwich addSignatureSandwiches() {
         int command;
-        while (true) {
+        while (true) {  // Loop until the user enters a valid choice (1 or 2)
             System.out.println("\n--- Signature Sandwiches ---");
             System.out.println("1) BLT");
             System.out.println("2) Philly Cheese Steak");
-            command = promptForInt("Please choose between 1 - 2");
-            if (command == 1 || command == 2) break;
+            command = promptForInt("Please choose between 1 - 2");  //Prompt user for input
+            if (command == 1 || command == 2) break;                // Exit loop if valid choice
             System.out.println("Invalid choice! Please select 1 or 2.");
         }
 
         Sandwich sandwich;
-
+        // Create the selected signature sandwich
         if (command == 1) {
             sandwich = SignatureSandwiches.BLT();
             System.out.println("\nBLT sandwich selected!");
@@ -220,7 +222,7 @@ public class UserInterface {
             System.out.println("\nPhilly Cheese Steak selected!");
         }
 
-        System.out.println("Base price: $" + String.format("%.2f", sandwich.getPrice()));
+        System.out.println("Base price: $" + String.format("%.2f", sandwich.getPrice())); // Display base price of the chosen sandwich
         return sandwich;
     }
 }
