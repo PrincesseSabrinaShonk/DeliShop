@@ -56,6 +56,10 @@ If the user confirms, the program saves the order using the ReceiptFileManager, 
 <img width="1064" height="524" alt="image" src="https://github.com/user-attachments/assets/95b8f4f4-7d2b-4fb3-8048-e350453c5630" />
 
 ## DIAGRAM
+<img width="1020" height="769" alt="image" src="https://github.com/user-attachments/assets/72405f37-1ec2-40b3-9726-2aa6512b8910" />
+
+
+
 
 
 
