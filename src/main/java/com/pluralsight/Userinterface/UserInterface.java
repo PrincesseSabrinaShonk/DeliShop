@@ -179,11 +179,8 @@ public class UserInterface {
 
     // method to Display how to add sandwich
     private static OrderItems addSandwich() {
-        System.out.println("\n---ADD SANDWICH---");
-        // Choose bread  type for the sandwich
-        displayOptions("Choose your bread type:", Bread.types);  // Prompt the user to choose a bread type for the sandwich
-        int breadOption = getValidatedOption("Enter bread option (1-" + Bread.types.length + ")", Bread.types.length, Bread::isValid);
-        String breadType = Bread.types[breadOption - 1]; // Prompt user and validate input
+         System.out.println("\n---ADD SANDWICH---");
+         String breadType = ConsoleHelper.getOption("bread type", Bread.types, Bread::isValid);  // Choose bread  type
 
         // Choose size
         displayOptions("Choose your sandwich size:", SandwichSize.size, " Inches");// Display a list of available bread types for the user to choose from
@@ -192,8 +189,8 @@ public class UserInterface {
 
         // Ask the user if they want their sandwich toasted
         boolean toasted = getYesNoChoice("Would you like it toasted?");
-        // Create a new Sandwich object with the specified bread size, type, and toasted preference
-        Sandwich sandwich = new Sandwich(breadSize, breadType, toasted);
+        Sandwich sandwich = new Sandwich(breadSize, breadType, toasted);// Create a new Sandwich object with the specified bread size, type
+
         // Display sandwich creation summary
         System.out.println("\n" + breadSize + "\" " + breadType + " sandwich created!");  // Show bread size and type
         System.out.println("Base price: $" + String.format("%.2f", sandwich.getPrice())); // Show the base price of the sandwich

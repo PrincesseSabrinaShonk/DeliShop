@@ -67,7 +67,6 @@ public class ConsoleHelper {
         }
         return option;   // Return the validated option after exiting the loop
     }
-
     // ======= TOPPING METHODS =======
     public static void addToppingsToSandwich(Sandwich sandwich) {
         while (true) { // Start an infinite loop to allow the user to repeatedly select toppings
@@ -179,6 +178,20 @@ public class ConsoleHelper {
         // Print the total price of the sandwich, formatted to two decimal places
         System.out.println("Total Price: $" + String.format("%.2f", sandwich.getPrice()));
         System.out.println("========================================\n");
+    }
+
+    // Prompts the user to select an option from a list, with custom validation logic
+    public static String getOption(String optionName, String[] options, IntPredicate validator){
+
+        // Display all available options (e.g., types of bread, sizes, etc.)
+        displayOptions("Choose your " + optionName + ":", options);
+        int choice = getValidatedOption(
+                "Enter " + optionName + " option (1-" + options.length + ")",
+                options.length,
+                validator
+        );
+        return options[choice - 1];
+        // Return the selected option from the array (subtract 1 since arrays are 0-indexed)
     }
 }
 
