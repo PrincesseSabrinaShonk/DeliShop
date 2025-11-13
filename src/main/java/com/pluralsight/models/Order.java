@@ -120,7 +120,7 @@ public class Order {
 
 
     public void addSignatureSandwich(Sandwich sandwich) {
-        sandwiches.add(sandwich); // todo
+        sandwiches.add(sandwich);
 
        }
    }
