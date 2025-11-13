@@ -1,7 +1,7 @@
 package com.pluralsight.models;
 
 
-//Used to display chip choices to customers when adding chips to their order.
+// This class contains a static array that defines the available chip flavors to choose from
 public class ChipsChoice {
     public static String[] choice ={
             "Classic",

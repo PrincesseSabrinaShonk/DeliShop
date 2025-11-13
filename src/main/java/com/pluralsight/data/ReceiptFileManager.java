@@ -30,11 +30,11 @@ public class ReceiptFileManager {
 
             // SANDWICHES
             if (!order.getSandwiches().isEmpty()) {
-                w.write("------------ SANDWICHES ---------------\n");
+                w.write("------------ SANDWICHES ---------------\n");  // Loop through each sandwich in the 'sandwiches' list
                 for (int i = 0; i < order.getSandwiches().size(); i++) {
-                    Sandwich sandwich = order.getSandwiches().get(i);
-                    w.write((i + 1) + ") " + sandwich.getDescription() + "\n");
-                    w.write(String.format("   Price: $%.2f%n", sandwich.getPrice()));
+                    Sandwich sandwich = order.getSandwiches().get(i);   // Retrieve the sandwich object
+                    w.write((i + 1) + ") " + sandwich.getDescription() + "\n");   // Write the sandwich description
+                    w.write(String.format("   Price: $%.2f%n", sandwich.getPrice())); // Write the price of the sandwich to the output
                     w.write("----------------------------------------\n");
                 }
             }

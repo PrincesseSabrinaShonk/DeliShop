@@ -1,7 +1,8 @@
 package com.pluralsight.models;
 
+//This class contains a static array that lists all available sauce types at the deli shop
 public class Sauces {
-    public static String[] Sauce = {   // Static array containing all sauce types available at the deliShop
+    public static String[] Sauce = {
             "Mayo",
             "Mustard",
             "Ketchup",

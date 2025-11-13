@@ -31,13 +31,13 @@ public class Drink extends OrderItems {    // --- Instance variables ---
     //Override methods from OrderItems
     @Override
     public double getPrice() {
-        switch (size.toLowerCase()) {
+        switch (size.toLowerCase()) {   // Use a switch statement to return the price based on the size of the item
             case "small":
-                return 2.00;
+                return 2.00;    // Price for small size
             case "medium":
-                return 2.50;
+                return 2.50;    // Price for medium size
             case "large":
-                return 3.00;
+                return 3.00;       // Price for large size
             default:
                 return 0;
         }
@@ -45,8 +45,10 @@ public class Drink extends OrderItems {    // --- Instance variables ---
 
     // Returns a short description of the drink
     @Override
+    // Capitalize the first letter of the size and combine it with the flavor to generate a description for the drink.
     public String getDescription() {
-        return size.substring(0, 1).toUpperCase() + size.substring(1) + " " + flavor + " Drink";
+        return size.substring(0, 1).toUpperCase()
+                + size.substring(1) + " " + flavor + " Drink";
 
     }
 

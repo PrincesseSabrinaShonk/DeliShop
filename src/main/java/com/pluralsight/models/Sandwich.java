@@ -59,7 +59,7 @@ public class Sandwich extends OrderItems {
         double basePrice = 0;
 
          // Determine the base sandwich price based on bread size
-        if (breadsize.equals("4")) basePrice = 5.50;
+        if (breadsize.equals("4")) basePrice = 5.50;  // If the bread size is "4" inches, set the base price to $5.50
         else if (breadsize.equals("8")) basePrice = 7.00;
         else if (breadsize.equals("12")) basePrice = 8.50;
 
@@ -72,7 +72,7 @@ public class Sandwich extends OrderItems {
             switch (topping.getType().toUpperCase()) {
                 case "MEAT" -> {
                     switch (breadsize) {
-                        case "4" -> total += topping.isExtra() ? 0.50 : 1.00;
+                        case "4" -> total += topping.isExtra() ? 0.50 : 1.00;// For a 4-inch sandwich, add cost based on whether the topping is extra or not
                         case "8" -> total += topping.isExtra() ? 1.00 : 2.00;
                         case "12" -> total += topping.isExtra() ? 1.50 : 3.00;
                     }

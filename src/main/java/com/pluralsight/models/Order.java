@@ -80,21 +80,23 @@ public class Order {
         if (!sandwiches.isEmpty()) {                          // Check if there are any sandwiches in the order
             details.append("\n---- Sandwiches ----\n");
             for (int i = 0; i < sandwiches.size(); i++) {      // Loop through all sandwiches in the order
-                details.append((i + 1))
+                details.append((i + 1))  // Append the sandwich description and its price
                         .append(". ").append(sandwiches.get(i).getDescription())
                         .append("\n");
+                // Append the formatted price of the sandwich
                 details.append(String.format("   Price: $%.2f%n", sandwiches.get(i).getPrice()));
             }
         }
-
+        // Check if there are any drinks in the order
         if (!drinks.isEmpty()) {
             details.append("\n---- Drinks ----\n");
-            for (int i = 0; i < drinks.size(); i++) {
-                details.append((i + 1))
+            for (int i = 0; i < drinks.size(); i++) { // Loop through each drink in the drinks list
+                details.append((i + 1))              // Item number (starts at 1)
                         .append(". ")
-                        .append(drinks.get(i).toString()).append("\n");
+                        .append(drinks.get(i).toString()).append("\n"); // Get the drink description
             }
         }
+        // Check if there are any chips in the order
         if (!chips.isEmpty()) {
             details.append("\n---- Chips ----\n");
             for (int i = 0; i < chips.size(); i++) {
@@ -114,11 +116,11 @@ public class Order {
             return "No items in your order.";
         }
         return getOrderDetails();
-    }   // todo display as String
+    }
 
 
     public void addSignatureSandwich(Sandwich sandwich) {
-        sandwiches.add(sandwich);
+        sandwiches.add(sandwich); // todo
 
        }
    }
