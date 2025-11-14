@@ -53,6 +53,7 @@ public class Sandwich extends OrderItems {
     public ArrayList<Topping> getToppings() {
         return toppings;
     }
+
     public boolean removeTopping(int toppingNumber) {
         int index = toppingNumber - 1;  // Convert 1-based to 0-based index
         if (index >= 0 && index < toppings.size()) {

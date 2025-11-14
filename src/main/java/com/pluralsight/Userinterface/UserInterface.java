@@ -4,6 +4,7 @@ import com.pluralsight.models.*;
 import static com.pluralsight.Userinterface.ConsoleHelper.*;
 
 public class UserInterface {
+
     public void display() {
         HomeScreen();
     }
@@ -233,6 +234,7 @@ public class UserInterface {
         System.out.println("Base price: $" + String.format("%.2f", sandwich.getPrice()));
         return sandwich;
     }
+
     private static void modifySignatureSandwich(Sandwich sandwich) {
         while (true) {
             // Display Current Toppings

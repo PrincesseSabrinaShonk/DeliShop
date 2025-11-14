@@ -21,12 +21,10 @@ public class ReceiptFileManager {
             DateTimeFormatter displayFormatter = DateTimeFormatter.ofPattern("MM/dd/yyyy hh:mm:ss a");
 
             // HEADER
-            w.write("===== DELI-SHOP Receipt =====\n");
-            w.write("Date: " + now.format(displayFormatter) + "\n");
-            w.write("================================\n");
             w.write("========================================\n");
-            w.write("       WELCOME TO OUR DELI-SHOP!       \n");
-            w.write("========================================\n");
+            w.write("           WELCOME TO OUR  DELI-SHOP\n");
+            w.write("========================================\n\n");
+
 
             // SANDWICHES
             if (!order.getSandwiches().isEmpty()) {
@@ -35,7 +33,7 @@ public class ReceiptFileManager {
                     Sandwich sandwich = order.getSandwiches().get(i);   // Retrieve the sandwich object
                     w.write((i + 1) + ") " + sandwich.getDescription() + "\n");   // Write the sandwich description
                     w.write(String.format("   Price: $%.2f%n", sandwich.getPrice())); // Write the price of the sandwich to the output
-                    w.write("----------------------------------------\n");
+                    System.out.println();
                 }
             }
             // DRINKS
@@ -44,7 +42,7 @@ public class ReceiptFileManager {
                 for (int i = 0; i < order.getDrinks().size(); i++) {
                     Drink drink = order.getDrinks().get(i);
                     w.write((i + 1) + ") " + drink.toString() + "\n");
-                    w.write("----------------------------------------\n");
+                    System.out.println();
                 }
             }
             // CHIPS
@@ -53,7 +51,7 @@ public class ReceiptFileManager {
                 for (int i = 0; i < order.getChips().size(); i++) {
                     Chips chip = order.getChips().get(i);
                     w.write((i + 1) + ") " + chip.toString() + "\n");
-                    w.write("----------------------------------------\n");
+                    System.out.println();
                 }
             }
             // TOTAL

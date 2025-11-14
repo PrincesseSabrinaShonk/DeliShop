@@ -1,0 +1,15 @@
+========================================
+           WELCOME TO OUR  DELI-SHOP
+========================================
+
+Items:
+------------ SANDWICHES ---------------
+1) 12" Wheat (Toasted: Yes)
+   Toppings: Mayo, Au Jus
+   Price: $8.50
+--------------- DRINKS ----------------
+1) Large sprite Drink - $3.00
+========================================
+ RECEIPT TOTAL: $11.50
+========================================
+Thank you for visiting our DELI-SHOP!
