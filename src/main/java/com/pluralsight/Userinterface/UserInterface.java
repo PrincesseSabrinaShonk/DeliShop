@@ -236,7 +236,61 @@ public class UserInterface {
         System.out.println("Base price: $" + String.format("%.2f", sandwich.getPrice()));
         return sandwich;
     }
+    private static void modifySignatureSandwich(Sandwich sandwich) {
+        while (true) {
+            // Display Current Toppings
+            System.out.println("\nCurrent Toppings:");
+            for (int i = 0; i < sandwich.getToppings().size(); i++) {
+                System.out.println((i + 1) + ") " + sandwich.getToppings().get(i).getName());
+            }
+            // Modification 
+            System.out.println("\n1) Add Topping");
+            System.out.println("2) Remove Topping");
+            System.out.println("3) Done");
+            String choice = promptForString("Enter your choice (1-3)");
+            switch (choice) {
+                case "1":
+                    addToppingsToSandwich(sandwich);
+                    break;
+                case "2":
+                    removeToppingFromSignature(sandwich);
+                    break;
+                case "3":
+                    // Finish modification
+                    System.out.println("\nFinal Signature Sandwich:");
+                    System.out.println(sandwich.getDescription());
+                    System.out.println("Total Price: $" + String.format("%.2f", sandwich.getPrice()));
+                    System.out.println("========================================\n");
+                    return;
+                default:
+                    System.out.println("Invalid option. Try again.");
+            }
+        }
+    }
+    private static void removeToppingFromSignature(Sandwich sandwich) {
+        // Show current toppings
+        System.out.println("\nCurrent Toppings:");
+        for (int i = 0; i < sandwich.getToppings().size(); i++) {
+            System.out.println((i + 1) + ") " + sandwich.getToppings().get(i).getName());
+        }
+       // Ask user which topping to remove
+        int removeIndex = promptForInt("Enter the number of the topping to remove:");
+       // Convert to 0-based index
+        int index = removeIndex - 1;
+        // Check if the index is valid
+        if (index >= 0 && index < sandwich.getToppings().size()) {
+            // Grab the topping name BEFORE removing it
+            String removedName = sandwich.getToppings().get(index).getName();
+            // Remove the topping
+            sandwich.removeTopping(removeIndex);
+            System.out.println(removedName + " removed.\n");
+        } else {
+            System.out.println("Invalid topping number.\n");
+        }
+    }
 }
+
+
 
 
 

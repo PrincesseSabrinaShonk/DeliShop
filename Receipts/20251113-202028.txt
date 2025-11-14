@@ -1,0 +1,15 @@
+===== DELI-SHOP Receipt =====
+Date: 11/13/2025 08:20:28 PM
+================================
+========================================
+       WELCOME TO OUR DELI-SHOP!       
+========================================
+------------ SANDWICHES ---------------
+1) 8" white (Toasted: Yes)
+   Toppings: Bacon, Lettuce, Tomato, Ranch, Provolone
+   Price: $10.50
+----------------------------------------
+========================================
+ RECEIPT TOTAL: $10.50
+========================================
+Thank you for visiting our DELI-SHOP!

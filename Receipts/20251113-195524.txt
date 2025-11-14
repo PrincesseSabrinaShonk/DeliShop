@@ -1,0 +1,25 @@
+===== DELI-SHOP Receipt =====
+Date: 11/13/2025 07:55:24 PM
+================================
+========================================
+       WELCOME TO OUR DELI-SHOP!       
+========================================
+------------ SANDWICHES ---------------
+1) 8" White (Toasted: Yes)
+   Toppings: Ham (extra), Lettuce, Mayo, Mushrooms, Au Jus
+   Price: $8.00
+----------------------------------------
+2) 8" white (Toasted: Yes)
+   Toppings: Bacon, Cheddar, Lettuce, Tomato, Ranch, American
+   Price: $12.00
+----------------------------------------
+--------------- DRINKS ----------------
+1) Medium coke Drink - $2.50
+----------------------------------------
+--------------- CHIPS -----------------
+1) Classic Chips - $1.50
+----------------------------------------
+========================================
+ RECEIPT TOTAL: $24.00
+========================================
+Thank you for visiting our DELI-SHOP!
