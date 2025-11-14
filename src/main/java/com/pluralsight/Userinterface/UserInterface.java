@@ -81,7 +81,7 @@ public class UserInterface {
                     return;
                 default:
                     // Handle invalid menu selections
-                    System.out.println("Invalid choice. Please try again.");
+                    System.out.println("Invalid choice. Please choose between given number.");
             }
         }
     }
@@ -243,7 +243,7 @@ public class UserInterface {
             for (int i = 0; i < sandwich.getToppings().size(); i++) {
                 System.out.println((i + 1) + ") " + sandwich.getToppings().get(i).getName());
             }
-            // Modification 
+            // Modification
             System.out.println("\n1) Add Topping");
             System.out.println("2) Remove Topping");
             System.out.println("3) Done");

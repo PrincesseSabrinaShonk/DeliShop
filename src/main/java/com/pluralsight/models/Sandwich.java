@@ -55,16 +55,12 @@ public class Sandwich extends OrderItems {
     }
     public boolean removeTopping(int toppingNumber) {
         int index = toppingNumber - 1;  // Convert 1-based to 0-based index
-
         if (index >= 0 && index < toppings.size()) {
             toppings.remove(index);
             return true;
         }
         return false; // Invalid number
-
     }
-
-
     @Override
     public double getPrice() {
         double basePrice = 0;
@@ -73,12 +69,10 @@ public class Sandwich extends OrderItems {
         if (breadsize.equals("4")) basePrice = 5.50;  // If the bread size is "4" inches, set the base price to $5.50
         else if (breadsize.equals("8")) basePrice = 7.00;
         else if (breadsize.equals("12")) basePrice = 8.50;
-
         double total = basePrice;   // Start total with base price
 
         // Add topping prices
         for (Topping topping : toppings) {
-
             // Loop through each topping and add its price to the total
             switch (topping.getType().toUpperCase()) {
                 case "MEAT" -> {
@@ -100,7 +94,6 @@ public class Sandwich extends OrderItems {
         }
         return total;   // Return the final calculated price
     }
-
     // Show sandwich with toppings, including "(EXTRA)" if selected
     @Override
     public String getDescription() {
@@ -119,8 +112,6 @@ public class Sandwich extends OrderItems {
         }
         return sb.toString();
     }
-
-
     // Return a concise summary of the sandwich, including size, bread type, toasted status, and price
     @Override
     public String toString() {
