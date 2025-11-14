@@ -132,51 +132,48 @@ public class UserInterface {
         } else {    // If the user cancels the order
             System.out.println("\nOrder cancelled. Returning to Home Screen...\n");
             // Handle the cancellation by returning to the home screen or another appropriate action
-
-
         }
     }
 
     // Displays available drink sizes and flavors, prompts the user to select one
     private static OrderItems addDrink() {
-        System.out.println("\n--- Add Drink ---");
-        System.out.println("Select drink size:");
-        System.out.println("1) Small ($2.00)");
-        System.out.println("2) Medium ($2.50)");
-        System.out.println("3) Large ($3.00)");
-        String sizeChoice = ConsoleHelper.promptForString("Enter your drink Size");
-
-        String size;
-        switch (sizeChoice) {
-            case "1":
-                size = "small";  // User selected small size
-                break;
-            case "2":
-                size = "medium";  // User selected medium size
-                break;
-            case "3":
-                size = "large";   // User selected large size
-                break;
-            default:                 // Handle invalid input with a clear message
-                System.out.println("Invalid selection. Defaulting to small."); // need to be revised
-                size = "small";  // Default to small if invalid selection
-                break;
+        String size = null;
+        while (true) {
+            System.out.println("\n--- Add Drink ---");
+            System.out.println("Select drink size:");
+            System.out.println("1) Small ($2.00)");
+            System.out.println("2) Medium ($2.50)");
+            System.out.println("3) Large ($3.00)");
+            String sizeChoice = ConsoleHelper.promptForString("Enter your drink Size");
+            switch (sizeChoice) {
+                case "1":
+                    size = "small";
+                    break;
+                case "2":
+                    size = "medium";
+                    break;
+                case "3":
+                    size = "large";
+                    break;
+                default:
+                    System.out.println("Invalid input. You must choose from 1 - 3.\n");
+                    continue;  // Go back and show menu again
+            }
+            break; //valid selection, exit loop
         }
-        System.out.println("\nAvailable Flavors:");  // Display all available drink flavors
-
-        // Loop through all available drink flavors and display them to the user
+        System.out.println("\nAvailable Flavors:");
         for (String flavorOption : DrinkFlavor.flavors) {
             System.out.println("- " + flavorOption);
         }
-        String flavor = ConsoleHelper.promptForString("Which flavor would you like"); // Prompt user to select a flavor
-        Drink drink = new Drink(size, flavor);  // Create a new Drink object based on user selection
-
-        // Confirm the drink was added
-        System.out.println(size.substring(0, 1).toUpperCase() + size.substring(1) + " "
-                + flavor + " drink added successfully! ($" + String.format("%.2f", drink.getPrice()) + ")\n");
+        String flavor = ConsoleHelper.promptForString("Which flavor would you like");
+        Drink drink = new Drink(size, flavor);
+        System.out.println(
+                size.substring(0,1).toUpperCase() + size.substring(1)
+                        + " " + flavor + " added successfully! ($"
+                        + String.format("%.2f", drink.getPrice()) + ")\n"
+        );
         return drink;
     }
-
     // method to Display how to add sandwich
     private static OrderItems addSandwich() {
          System.out.println("\n---ADD SANDWICH---");

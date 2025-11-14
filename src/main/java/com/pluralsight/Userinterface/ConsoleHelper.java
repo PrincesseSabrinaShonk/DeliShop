@@ -63,7 +63,7 @@ public class ConsoleHelper {
             option = promptForInt(prompt); // Prompt the user for input using the promptForInt method
             if (validator.test(option)) break;  // If the input is valid according to the validator, break out of the loop
             // If the input is not valid, display an error message and prompt the user again
-            System.out.println("Invalid choice! Please select a number between 1 and " + max);
+            System.out.println("Invalid choice! Please select a number between 1 - " + max);
         }
         return option;   // Return the validated option after exiting the loop
     }
@@ -99,7 +99,7 @@ public class ConsoleHelper {
                     categoryType = "SIDE";
                 }
                 default -> {   // If the user selects an invalid option, print an error and continue
-                    System.out.println("Invalid choice!");
+                    System.out.println("Invalid choice! please choose from 1 - 6");
                     continue;  // Continue the loop to allow the user to select again
                 }
             }
