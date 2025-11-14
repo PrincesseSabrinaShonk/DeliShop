@@ -8,13 +8,12 @@ public class UserInterface {
     public void display() {
         HomeScreen();
     }
-
     //Display the HomeScreen
     private static void HomeScreen() {
         while (true) {
-            System.out.println("\n========================================");
-            System.out.println("       WELCOME TO OUR  DELI-SHOP!           ");
-            System.out.println("========================================\n");
+            System.out.println("\n┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓");
+            System.out.println("┃     WELCOME TO MY DELI-SHOP          ┃");
+            System.out.println("┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛");
             System.out.println("1) New Order");  // Option to start a new order
             System.out.println("0) Exit");       // Option to exit the application
 
@@ -36,15 +35,14 @@ public class UserInterface {
             }
         }
     }
-
     // Method to display the Order Screen and allow the user to add items to their order
     private static void OrderScreen() {
         Order order = new Order(); // Create a new order
         //Display the Order Screen menu
         while (true) {
-            System.out.println("\n========================================");
-            System.out.println("            ORDER SCREEN         ");
-            System.out.println("========================================\n");
+            System.out.println("\n┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓");
+            System.out.println("┃            ORDER SCREEN              ┃");
+            System.out.println("┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛");
             System.out.println("1) Add Sandwich");
             System.out.println("2) Add Drink");
             System.out.println("3) Add Chips");
@@ -199,12 +197,14 @@ public class UserInterface {
 
         //  Display final sandwich summary
         double finalPrice = sandwich.getPrice();
-        System.out.println("\n========================================");
-        System.out.println("     SANDWICH ADDED SUCCESSFULLY!");
-        System.out.println("========================================");
+        System.out.println("\n┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓");
+        System.out.println("┃     SANDWICH ADDED SUCCESSFULLY!     ┃");
+        System.out.println("┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛");
         System.out.println(sandwich.getDescription());
-        System.out.println("\nTotal Sandwich Price: $" + String.format("%.2f", finalPrice));
-        System.out.println("========================================\n");
+        System.out.println("━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━");
+        System.out.println("Total Sandwich Price: $" + String.format("%.2f", finalPrice));
+        System.out.println("━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n");
+
         return sandwich; // Return the created Sandwich object
 
     }
